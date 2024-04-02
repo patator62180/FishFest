@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://w5mymv1kldc1"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_u8nd1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0gr1"]
+albedo_color = Color(0.854902, 0.45098, 0.223529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8j2ot"]
+material = SubResource("StandardMaterial3D_v0gr1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_x5gsa"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spd0i"]
+albedo_color = Color(0.686275, 0.301961, 0.0235294, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_o4sft"]
+material = SubResource("StandardMaterial3D_spd0i")
+size = Vector3(0.25, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d52er"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_u8nd1")
+move_time = 0.3
+move_distance = 1.0
+rotation_speed = 2.0
+
+[node name="Body" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("BoxMesh_8j2ot")
+
+[node name="eye" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+mesh = SubResource("SphereMesh_x5gsa")
+
+[node name="eye2" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh = SubResource("SphereMesh_x5gsa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.652772)
+mesh = SubResource("PrismMesh_o4sft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("BoxShape3D_d52er")

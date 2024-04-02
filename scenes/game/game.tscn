@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpywa3bj60gk2"]
+
+[ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
+[ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.898794, -0.251439, 0.359093, 0, 0.819152, 0.573576, -0.438371, -0.515527, 0.736249, 2.37789, 3.79014, 3.52575)
+
+[node name="Player" parent="." instance=ExtResource("1_siy02")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.71934, 0.738424, -0.505324, 0.446518, 0, 0, 0)
+
+[node name="Level1" parent="." instance=ExtResource("2_fu777")]
