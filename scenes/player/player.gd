@@ -33,7 +33,7 @@ func start_moving():
         move_timer = 0
         
         move_start = position
-        rotation_start = rotation_degrees.y if rotation_degrees.y < 360 else 0
+        rotation_start = rotation_degrees.y if rotation_degrees.y < 360 else 0.0
         
         match input_stack.back():
             "left":

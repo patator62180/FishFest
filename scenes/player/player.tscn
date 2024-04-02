@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://w5mymv1kldc1"]
+[gd_scene load_steps=9 format=3 uid="uid://w5mymv1kldc1"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_u8nd1"]
+[ext_resource type="PackedScene" uid="uid://brsa431wwced1" path="res://scenes/fish/fish.tscn" id="2_wnppa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0gr1"]
 albedo_color = Color(0.854902, 0.45098, 0.223529, 1)
@@ -29,6 +30,7 @@ rotation_speed = 2.0
 
 [node name="Body" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("BoxMesh_8j2ot")
@@ -47,3 +49,6 @@ mesh = SubResource("PrismMesh_o4sft")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 shape = SubResource("BoxShape3D_d52er")
+
+[node name="Fish" parent="." instance=ExtResource("2_wnppa")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
