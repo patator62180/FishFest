@@ -7,6 +7,7 @@
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.898794, -0.251439, 0.359093, 0, 0.819152, 0.573576, -0.438371, -0.515527, 0.736249, 2.37789, 3.79014, 3.52575)
+current = true
 
 [node name="Player" parent="." instance=ExtResource("1_siy02")]
 

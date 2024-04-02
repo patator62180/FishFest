@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxxisfrbc7ktg"]
+
+[ext_resource type="PackedScene" uid="uid://oli1g128ke3h" path="res://scenes/shark/Shark.glb" id="1_2j5u4"]
+
+[node name="Shark2" instance=ExtResource("1_2j5u4")]
+
+[node name="lower_back" parent="Shark/body" index="1"]
+transform = Transform3D(0.999999, 0.00136136, 0, -0.00136136, 0.999999, 0, 0, 0, 1, 1.5, -8, -2.5)
+
+[node name="back_fin" parent="Shark/body/lower_back" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0.5)
