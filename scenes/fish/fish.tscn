@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://brsa431wwced1"]
+[gd_scene load_steps=11 format=3 uid="uid://brsa431wwced1"]
 
 [ext_resource type="PackedScene" uid="uid://pwbgded5ndhm" path="res://scenes/fish/fish.glb" id="1_0m178"]
+[ext_resource type="Script" path="res://scenes/fish/fish.gd" id="2_rph0c"]
 
 [sub_resource type="Animation" id="Animation_ffnkk"]
 resource_name = "RESET"
@@ -75,6 +76,82 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oy7cm"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFin:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.454047, 0), Vector3(0, -0.454047, 0), Vector3(0, 0.453786, 0), Vector3(0, 0.453786, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftFin:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.610865), Vector3(0, 0, 0.610865)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightFin:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.610865), Vector3(0, 0, -0.610865)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, -0.064, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.15708, 0, 0), Vector3(0.0523599, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DorsalFin:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.122173), Vector3(0, 0, 0.122173)]
 }
 
 [sub_resource type="Animation" id="Animation_qjkm0"]
@@ -155,82 +232,6 @@ tracks/5/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.122173), Vector3(0, 0, 0.122173)]
 }
 
-[sub_resource type="Animation" id="Animation_oy7cm"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackFin:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.7, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.454047, 0), Vector3(0, -0.454047, 0), Vector3(0, 0.453786, 0), Vector3(0, 0.453786, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftFin:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.610865), Vector3(0, 0, 0.610865)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightFin:rotation")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.610865), Vector3(0, 0, -0.610865)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, -0.064, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.15708, 0, 0), Vector3(0.0523599, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("DorsalFin:rotation")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.122173), Vector3(0, 0, 0.122173)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n1ex5"]
 _data = {
 "RESET": SubResource("Animation_ffnkk"),
@@ -238,7 +239,29 @@ _data = {
 "moving": SubResource("Animation_qjkm0")
 }
 
-[node name="Fish" instance=ExtResource("1_0m178")]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_axjh2"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sqc1r"]
+animation = &"moving"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3cbvs"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2tsre"]
+graph_offset = Vector2(-819.912, 86.2759)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_axjh2")
+nodes/Idle/position = Vector2(-240, 100)
+nodes/Moving/node = SubResource("AnimationNodeAnimation_sqc1r")
+nodes/Moving/position = Vector2(-240, 220)
+nodes/is_moving/node = SubResource("AnimationNodeBlend2_3cbvs")
+nodes/is_moving/position = Vector2(0, 120)
+node_connections = [&"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_moving"]
+
+[node name="Fish" node_paths=PackedStringArray("animation_player", "animation_tree") instance=ExtResource("1_0m178")]
+script = ExtResource("2_rph0c")
+animation_player = NodePath("AnimationPlayer")
+animation_tree = NodePath("AnimationTree")
+is_moving_transition_speed = 10.0
 
 [node name="DorsalFin" parent="." index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0, 0.5, -7.45058e-09)
@@ -250,3 +273,11 @@ transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.5, -0.3, -0.3)
 libraries = {
 "": SubResource("AnimationLibrary_n1ex5")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_n1ex5")
+}
+tree_root = SubResource("AnimationNodeBlendTree_2tsre")
+anim_player = NodePath("../AnimationPlayer")
+parameters/is_moving/blend_amount = 0.0

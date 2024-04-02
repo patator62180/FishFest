@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var fish: Fish
+
 @export var move_time: float
 @export var move_distance: float
 @export var rotation_speed: float
@@ -17,8 +19,7 @@ var move_timer: float
 # Called when the node enters the scene tree for the first time.
 func _ready():
     move_timer = move_time
-    pass # Replace with function body.
-
+    fish.set_moving(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -53,7 +54,9 @@ func start_moving():
                     rotation_start = -90
             "down":
                 move_target = position + Vector3.BACK * move_distance
-                rotation_target = 180          
+                rotation_target = 180         
+                
+        fish.set_moving(true)
         
 func process_move(delta):
     if move_timer == move_time:
@@ -68,6 +71,9 @@ func process_move(delta):
     if move_timer >= move_time:
         move_timer = move_time
         position = move_target
+        
+        if input_stack.is_empty():
+            fish.set_moving(false)
         
 func _input(event):
     if event.is_action_pressed("ui_left"):

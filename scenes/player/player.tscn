@@ -22,8 +22,9 @@ size = Vector3(0.25, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d52er"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" node_paths=PackedStringArray("fish")]
 script = ExtResource("1_u8nd1")
+fish = NodePath("FishParent/Fish")
 move_time = 0.3
 move_distance = 1.0
 rotation_speed = 2.0
@@ -50,5 +51,7 @@ mesh = SubResource("PrismMesh_o4sft")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 shape = SubResource("BoxShape3D_d52er")
 
-[node name="Fish" parent="." instance=ExtResource("2_wnppa")]
+[node name="FishParent" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Fish" parent="FishParent" instance=ExtResource("2_wnppa")]
