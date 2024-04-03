@@ -67,18 +67,6 @@ func _process(delta):
                 rotation_start = rotation.y
                 rotation_target = Vector2(target_end.x - target_start.x, target_start.z - target_end.z).rotated(deg_to_rad(90)).angle()
                 
-                #if sign(rotation_start) != sign(rotation_target):
-                    #print(rotation_start)
-                    #print(rotation_target)
-                    #print(" ")
-                    #
-                    #if rotation_start > rotation_target:
-                        #rotation_start = rotation_start - 2 * PI
-                    #elif rotation_start < rotation_target:
-                        #rotation_start = rotation_start + 2 * PI
-                    #
-                    #rotation.y = rotation_start
-                    
                 if movement_started:
                     wait_timer = 0
                     rotation_timer = 0
