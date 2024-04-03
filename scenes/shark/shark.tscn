@@ -232,3 +232,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2.5, -1.5)
 libraries = {
 "": SubResource("AnimationLibrary_nfvj4")
 }
+autoplay = "moving"

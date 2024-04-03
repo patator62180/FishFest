@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=4 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
+[ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="3_4yqm6"]
 
 [node name="Game" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.898794, -0.251439, 0.359093, 0, 0.819152, 0.573576, -0.438371, -0.515527, 0.736249, 2.37789, 3.79014, 3.52575)
+transform = Transform3D(0.898794, -0.251439, 0.359093, 0, 0.819152, 0.573576, -0.438371, -0.515527, 0.736249, 2.37789, 3.79014, 1.63531)
 current = true
 
 [node name="Player" parent="." instance=ExtResource("1_siy02")]
@@ -16,4 +17,15 @@ transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.719
 
 [node name="Level1" parent="." instance=ExtResource("2_fu777")]
 
+[node name="SharkObstacle" parent="." instance=ExtResource("3_4yqm6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, -15)
+
+[node name="lower_back" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="1"]
+transform = Transform3D(0.999999, 0.00136136, 0, -0.00136136, 0.999999, 0, 0, 0, 1, 1.5, -8, -2.5)
+
+[node name="neck" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -2)
+
 [editable path="Player"]
+[editable path="SharkObstacle"]
+[editable path="SharkObstacle/SharkParent/Shark2"]

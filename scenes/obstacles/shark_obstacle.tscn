@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://v6vv253i73fu"]
+
+[ext_resource type="PackedScene" uid="uid://cxxisfrbc7ktg" path="res://scenes/shark/shark.tscn" id="1_cq1le"]
+[ext_resource type="Script" path="res://scenes/obstacles/moving_obstacle.gd" id="1_vfxhy"]
+
+[node name="SharkObstacle" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_vfxhy")
+targets = Array[Vector3]([Vector3(-20, 0, 0), Vector3(0, 0, 4), Vector3(20, 0, 0), Vector3(0, 0, -4)])
+movement_speed = 0.25
+rotation_duration = 0.4
+
+[node name="SharkParent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01, 0.67228)
+
+[node name="Shark2" parent="SharkParent" instance=ExtResource("1_cq1le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)

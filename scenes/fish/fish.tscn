@@ -326,14 +326,14 @@ animation = &"moving"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3cbvs"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2tsre"]
-graph_offset = Vector2(-505.944, 37.2134)
+graph_offset = Vector2(-462.186, 50.6658)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_axjh2")
 nodes/Idle/position = Vector2(-240, 100)
 nodes/Moving/node = SubResource("AnimationNodeAnimation_sqc1r")
 nodes/Moving/position = Vector2(-240, 220)
 nodes/is_moving/node = SubResource("AnimationNodeBlend2_3cbvs")
 nodes/is_moving/position = Vector2(0, 120)
-node_connections = [&"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving"]
+node_connections = [&"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_moving"]
 
 [node name="Fish" node_paths=PackedStringArray("animation_player", "animation_tree") instance=ExtResource("1_0m178")]
 script = ExtResource("2_rph0c")
