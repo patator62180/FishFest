@@ -7,7 +7,7 @@
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_vfxhy")
 targets = Array[Vector3]([Vector3(-20, 0, 0), Vector3(0, 0, 4), Vector3(20, 0, 0), Vector3(0, 0, -4)])
-movement_speed = 0.25
+movement_speed = 0.5
 rotation_duration = 0.4
 
 [node name="SharkParent" type="Node3D" parent="."]
