@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqsivhg1nmyks"]
+
+[ext_resource type="PackedScene" uid="uid://dtviv0aa1x2t" path="res://scenes/boat/boat.tscn" id="1_6rhpd"]
+[ext_resource type="Script" path="res://scenes/obstacles/moving_obstacle.gd" id="1_ai88f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65ewo"]
+size = Vector3(1.79, 2.14, 4.19)
+
+[node name="BoatObstacle" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_ai88f")
+movement_type = 1
+targets = Array[Vector3]([Vector3(0, 0, 0), Vector3(-10, 0, 0)])
+movement_speed = 1.0
+
+[node name="BoatParent" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.124123, 0.194655, 0.891492)
+
+[node name="Boat" parent="BoatParent" instance=ExtResource("1_6rhpd")]
+transform = Transform3D(1, 0, 0, 0, 0.995913, -0.0903197, 0, 0.0903197, 0.995913, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="BoatParent"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoatParent/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0, 0.261)
+shape = SubResource("BoxShape3D_65ewo")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="BoatParent/Area3D" to="." method="_on_area_3d_area_entered"]

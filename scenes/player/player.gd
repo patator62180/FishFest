@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Player
+
 @export var fish: Fish
 
 @export var move_time: float
