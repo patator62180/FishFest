@@ -335,10 +335,8 @@ nodes/is_moving/node = SubResource("AnimationNodeBlend2_3cbvs")
 nodes/is_moving/position = Vector2(0, 120)
 node_connections = [&"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_moving"]
 
-[node name="Fish" node_paths=PackedStringArray("animation_player", "animation_tree") instance=ExtResource("1_0m178")]
+[node name="Fish" instance=ExtResource("1_0m178")]
 script = ExtResource("2_rph0c")
-animation_player = NodePath("AnimationPlayer")
-animation_tree = NodePath("AnimationTree")
 is_moving_transition_speed = 10.0
 
 [node name="DorsalFin" parent="." index="1"]
