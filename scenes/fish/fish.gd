@@ -3,13 +3,16 @@ extends Node3D
 class_name Fish
 
 @export var animation_player: AnimationPlayer
-@export var animation_tree: AnimationTree
-
 @export var is_moving_transition_speed: float
+
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var glasses: MeshInstance3D = $Glasses
 
 var is_moving_bool: bool
 var is_moving_float: float
 
+func _ready():
+    glasses.visible = false
 
 func play_anim(animation: String):
     animation_player.play(animation)

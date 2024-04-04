@@ -20,6 +20,9 @@ transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.719
 [node name="SharkObstacle" parent="." instance=ExtResource("3_4yqm6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10, 0, -15)
 
+[node name="Shark2" parent="SharkObstacle/SharkParent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="lower_back" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="1"]
 transform = Transform3D(0.999999, 0.00136136, 0, -0.00136136, 0.999999, 0, 0, 0, 1, 1.5, -8, -2.5)
 
