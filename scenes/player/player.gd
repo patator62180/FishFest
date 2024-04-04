@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Player
+
 @export var fish: Fish
 
 @export var move_time: float
@@ -16,10 +18,13 @@ var rotation_target: float
 
 var move_timer: float
 
+static var instance: Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     move_timer = move_time
     fish.set_moving(false)
+    instance = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -93,3 +98,6 @@ func _input(event):
         input_stack.erase("up")
     if event.is_action_released("ui_down"):
         input_stack.erase("down")
+
+func die():
+    visible = false

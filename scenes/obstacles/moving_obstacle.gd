@@ -10,7 +10,9 @@ class_name MovingObstacle
 @export var wait_duration: float
 @export var rotation_duration: float
 
-enum MovementType { BackAndForth }
+@export var kill_switch: bool
+
+enum MovementType { BackAndForth, OneWay, OnceAndGone }
 
 var movement_duration: float
 var movement_timer: float
@@ -22,7 +24,6 @@ var target_end: Vector3
 var rotation_start: float
 var rotation_target: float
 var rotation_timer:float
-
 
 var target_index: int
 var movement_started: bool
@@ -65,7 +66,7 @@ func _process(delta):
                 target_end = targets[target_index]
                 
                 rotation_start = rotation.y
-                rotation_target = Vector2(target_end.x - target_start.x, target_start.z - target_end.z).rotated(deg_to_rad(90)).angle()
+                rotation_target = get_rotation_for_segment()
                 
                 if movement_started:
                     wait_timer = 0
@@ -74,8 +75,47 @@ func _process(delta):
                     movement_started = true
                     rotation.y = rotation_target
                 
-                movement_duration = movement_speed * (target_start - target_end).length()
+                refresh_movement_duration()
             else:
                 position = lerp(target_start, target_end, movement_timer / movement_duration)
-                
-                
+        
+        MovementType.OneWay:
+            if !movement_started:
+                target_start = targets[0]
+                target_end = targets[1]
+                refresh_movement_duration()
+                rotation.y = get_rotation_for_segment()
+                movement_started = true
+            
+            movement_timer = min(movement_timer + delta, movement_duration)
+            position = lerp(target_start, target_end, movement_timer / movement_duration)
+            
+            if movement_timer == movement_duration:
+                movement_timer = 0
+        
+        MovementType.OnceAndGone:
+            if !movement_started:
+                target_start = position
+                target_end = targets[0]
+                refresh_movement_duration()
+                rotation.y = get_rotation_for_segment()
+                movement_started = true
+            
+            movement_timer = min(movement_timer + delta, movement_duration)
+            position = lerp(target_start, target_end, movement_timer / movement_duration)
+            
+            if movement_timer == movement_duration:
+                queue_free()
+
+func refresh_movement_duration():
+    movement_duration = movement_speed * (target_start - target_end).length()
+    
+func get_rotation_for_segment():
+    return Vector2(target_end.x - target_start.x, target_start.z - target_end.z).rotated(deg_to_rad(90)).angle()
+
+func _on_area_3d_area_entered(area):
+    if !kill_switch:
+        return
+        
+    if area.name == "Player":
+        get_tree().reload_current_scene()

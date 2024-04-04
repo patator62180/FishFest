@@ -1,17 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://db8vs710eb7mq"]
+[gd_scene load_steps=6 format=3 uid="uid://db8vs710eb7mq"]
+
+[ext_resource type="PackedScene" uid="uid://chksqebqkb0bi" path="res://scenes/water/water_wind_waker.tscn" id="1_5n7ux"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqc20"]
 transparency = 1
-albedo_color = Color(0.137255, 0.345098, 0.517647, 0.337255)
+albedo_color = Color(0.137255, 0.345098, 0.517647, 0.721569)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1udkp"]
 material = SubResource("StandardMaterial3D_iqc20")
 size = Vector2(40, 10)
 center_offset = Vector3(19.5, 0, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gjn2"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.121569, 0.0705882, 0.00784314, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bwybj"]
+material = SubResource("StandardMaterial3D_0gjn2")
+
 [node name="Level1" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_1udkp")
 skeleton = NodePath("")
+
+[node name="WaterWindWaker" parent="." instance=ExtResource("1_5n7ux")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="WaterWindWaker2" parent="." instance=ExtResource("1_5n7ux")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, 8.74228e-07)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(19.915, 0, 0, 0, 19.915, 0, 0, 0, 19.915, 11.3517, -3.26181, 4.96199e-07)
+mesh = SubResource("PlaneMesh_bwybj")
