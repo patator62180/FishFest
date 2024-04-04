@@ -18,11 +18,11 @@ player = NodePath("../Player")
 dummy_look_at = NodePath("DummyLookAt")
 camera_speed = 1.0
 catchup_speed = 0.1
-dummy_dampening = 0.3
 dummy_speed = 0.01
 
 [node name="Camera3D" parent="CameraParent" index="0"]
-size = 17.442
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 7.5, 5)
+size = 11.252
 
 [node name="DummyLookAt" type="Node3D" parent="CameraParent"]
 
@@ -57,21 +57,18 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -8)
 targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
 movement_speed = 0.1
 rotation_duration = 1.0
-kill_switch = true
 
 [node name="BoatObstacle3" parent="." instance=ExtResource("4_l0lxb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -26)
 targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
 movement_speed = 0.1
 rotation_duration = 1.0
-kill_switch = true
 
 [node name="BoatObstacle4" parent="." instance=ExtResource("4_l0lxb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -17)
 targets = Array[Vector3]([Vector3(-25, 0, 0), Vector3(50, 0, 0)])
 movement_speed = 0.1
 rotation_duration = 1.0
-kill_switch = true
 
 [node name="BoatObstacle2" parent="." instance=ExtResource("4_l0lxb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -40)
@@ -79,7 +76,6 @@ movement_type = 2
 targets = Array[Vector3]([Vector3(0, 0, 100)])
 movement_speed = 0.1
 rotation_duration = 1.0
-kill_switch = true
 
 [editable path="CameraParent"]
 [editable path="Player"]
