@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://w5mymv1kldc1"]
+[gd_scene load_steps=10 format=3 uid="uid://w5mymv1kldc1"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_u8nd1"]
 [ext_resource type="PackedScene" uid="uid://brsa431wwced1" path="res://scenes/fish/fish.tscn" id="2_wnppa"]
@@ -22,10 +22,13 @@ size = Vector3(0.25, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d52er"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xstlj"]
+size = Vector3(1.78653, 1.42535, 2.08936)
+
 [node name="Player" type="Node3D" node_paths=PackedStringArray("fish")]
 script = ExtResource("1_u8nd1")
 fish = NodePath("FishParent/Fish")
-move_time = 0.3
+move_time = 0.25
 move_distance = 1.0
 rotation_speed = 2.0
 
@@ -55,3 +58,9 @@ shape = SubResource("BoxShape3D_d52er")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Fish" parent="FishParent" instance=ExtResource("2_wnppa")]
+
+[node name="Player" type="Area3D" parent="FishParent"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FishParent/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018631, 0.212677, -0.247803)
+shape = SubResource("BoxShape3D_xstlj")

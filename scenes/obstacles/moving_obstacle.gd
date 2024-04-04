@@ -114,4 +114,8 @@ func get_rotation_for_segment():
     return Vector2(target_end.x - target_start.x, target_start.z - target_end.z).rotated(deg_to_rad(90)).angle()
 
 func _on_area_3d_area_entered(area):
-    print(area)
+    if !kill_switch:
+        return
+        
+    if area.name == "Player":
+        get_tree().reload_current_scene()

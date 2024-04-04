@@ -57,18 +57,21 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -8)
 targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
 movement_speed = 0.1
 rotation_duration = 1.0
+kill_switch = true
 
 [node name="BoatObstacle3" parent="." instance=ExtResource("4_l0lxb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -26)
 targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
 movement_speed = 0.1
 rotation_duration = 1.0
+kill_switch = true
 
 [node name="BoatObstacle4" parent="." instance=ExtResource("4_l0lxb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -17)
 targets = Array[Vector3]([Vector3(-25, 0, 0), Vector3(50, 0, 0)])
 movement_speed = 0.1
 rotation_duration = 1.0
+kill_switch = true
 
 [node name="BoatObstacle2" parent="." instance=ExtResource("4_l0lxb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -40)
@@ -76,6 +79,7 @@ movement_type = 2
 targets = Array[Vector3]([Vector3(0, 0, 100)])
 movement_speed = 0.1
 rotation_duration = 1.0
+kill_switch = true
 
 [editable path="CameraParent"]
 [editable path="Player"]
