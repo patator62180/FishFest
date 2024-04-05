@@ -60,7 +60,6 @@ shape = SubResource("BoxShape3D_d52er")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Fish" parent="FishParent" instance=ExtResource("2_wnppa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Player" type="Area3D" parent="FishParent"]
 
