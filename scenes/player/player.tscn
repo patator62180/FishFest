@@ -27,42 +27,53 @@ size = Vector3(1.78653, 1.42535, 2.08936)
 
 [node name="Player" type="Node3D" node_paths=PackedStringArray("fish")]
 script = ExtResource("1_u8nd1")
-fish = NodePath("FishParent/Fish")
+fish = NodePath("MeshInstance3D/MeshInstance3D/FishParent/Fish")
 move_time = 0.25
 move_time_struggle = 0.7
 move_distance = 1.0
 move_distance_struggle = 2.0
 rotation_speed = 2.0
 
-[node name="Body" type="StaticBody3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 3
+
+[node name="Body" type="StaticBody3D" parent="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Body"]
+layers = 3
 mesh = SubResource("BoxMesh_8j2ot")
 
-[node name="eye" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+[node name="eye" type="MeshInstance3D" parent="MeshInstance3D/Body/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+layers = 3
 mesh = SubResource("SphereMesh_x5gsa")
 
-[node name="eye2" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+[node name="eye2" type="MeshInstance3D" parent="MeshInstance3D/Body/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+layers = 3
 mesh = SubResource("SphereMesh_x5gsa")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Body/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.652772)
+layers = 3
 mesh = SubResource("PrismMesh_o4sft")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Body"]
 shape = SubResource("BoxShape3D_d52er")
 
-[node name="FishParent" type="Node3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 3
+skeleton = NodePath("FishParent")
 
-[node name="Fish" parent="FishParent" instance=ExtResource("2_wnppa")]
+[node name="FishParent" type="Node3D" parent="MeshInstance3D/MeshInstance3D"]
 
-[node name="Player" type="Area3D" parent="FishParent"]
+[node name="Fish" parent="MeshInstance3D/MeshInstance3D/FishParent" instance=ExtResource("2_wnppa")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FishParent/Player"]
+[node name="Player" type="Area3D" parent="MeshInstance3D/MeshInstance3D/FishParent"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D/FishParent/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018631, 0.212677, -0.247803)
 shape = SubResource("BoxShape3D_xstlj")

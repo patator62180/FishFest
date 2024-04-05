@@ -379,17 +379,24 @@ node_connections = [&"TimeSeek", 0, &"IdleGround", &"is_grounded", 0, &"is_movin
 script = ExtResource("2_rph0c")
 is_moving_transition_speed = 10.0
 
+[node name="Body" parent="." index="0"]
+layers = 3
+
 [node name="DorsalFin" parent="." index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0, 0.5, 0)
+layers = 3
 
 [node name="LeftFin" parent="." index="2"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.5, -0.3, -0.3)
+layers = 3
 
 [node name="RightFin" parent="." index="3"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.5, -0.3, -0.3)
+layers = 3
 
 [node name="BackFin" parent="." index="4"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 5.96046e-08, 3.55271e-15, -0.7)
+layers = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
@@ -406,3 +413,6 @@ parameters/TimeSeek/seek_request = -1.0
 parameters/is_grounded/blend_amount = 0.0
 parameters/is_moving/blend_amount = 0.0
 parameters/struggle_height/blend_amount = 0.5
+
+[node name="Glasses" parent="." index="7"]
+layers = 3
