@@ -12,6 +12,8 @@ class_name MovingObstacle
 
 @export var kill_switch: bool
 
+@export var warning_width: float
+
 enum MovementType { BackAndForth, OneWay, OnceAndGone }
 
 var movement_duration: float
@@ -85,13 +87,23 @@ func _process(delta):
                 target_end = targets[1]
                 refresh_movement_duration()
                 rotation.y = get_rotation_for_segment()
+                position = target_start
                 movement_started = true
+                
+                generate_warning_one_way()
+                wait_timer = 0                
+                
+            if wait_timer < wait_duration:
+                wait_timer = min(wait_timer + delta, wait_duration)
+                return
             
             movement_timer = min(movement_timer + delta, movement_duration)
             position = lerp(target_start, target_end, movement_timer / movement_duration)
             
             if movement_timer == movement_duration:
                 movement_timer = 0
+                wait_timer = 0
+                generate_warning_one_way()
         
         MovementType.OnceAndGone:
             if !movement_started:
@@ -119,3 +131,7 @@ func _on_area_3d_area_entered(area):
         
     if area.name == "Player":
         get_tree().reload_current_scene()
+        
+func generate_warning_one_way():
+    ObstacleWarningFactory.instance.generate_warning(target_start, rotation, movement_duration / movement_speed, wait_duration, warning_width)
+    

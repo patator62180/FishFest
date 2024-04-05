@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=12 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="3_4yqm6"]
 [ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
 [ext_resource type="PackedScene" uid="uid://cqsivhg1nmyks" path="res://scenes/obstacles/boat_obstacle.tscn" id="4_l0lxb"]
+[ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
 viewport_path = NodePath("Cam POV")
@@ -34,7 +35,7 @@ catchup_speed = 0.1
 dummy_speed = 0.01
 
 [node name="Camera3D" parent="CameraParent" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 7.5, 5)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.5, 5)
 size = 11.252
 
 [node name="DummyLookAt" type="Node3D" parent="CameraParent"]
@@ -78,7 +79,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, -30)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="lower_back" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="1"]
-transform = Transform3D(0.999997, 0.00136136, 0, -0.00136136, 0.999997, 0, 0, 0, 1, 1.5, -8, -2.5)
+transform = Transform3D(0.999996, 0.00136136, 0, -0.00136136, 0.999996, 0, 0, 0, 1, 1.5, -8, -2.5)
 
 [node name="neck" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -2)
@@ -107,6 +108,9 @@ movement_type = 2
 targets = Array[Vector3]([Vector3(0, 0, 100)])
 movement_speed = 0.1
 rotation_duration = 1.0
+
+[node name="ObstacleWarningFactory" type="Node" parent="."]
+script = ExtResource("8_ulr11")
 
 [editable path="CameraParent"]
 [editable path="Player"]
