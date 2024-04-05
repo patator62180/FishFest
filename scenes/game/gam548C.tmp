@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
 [ext_resource type="Script" path="res://scenes/camera/camera_parent.gd" id="2_q0fbw"]
 [ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="3_4yqm6"]
-[ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
+[ext_resource type="Script" path="res://scenes/game/HUDcam.gd" id="3_dwdhq"]
 [ext_resource type="PackedScene" uid="uid://cqsivhg1nmyks" path="res://scenes/obstacles/boat_obstacle.tscn" id="4_l0lxb"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
-viewport_path = NodePath("Cam POV")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0n036"]
 
@@ -19,8 +19,8 @@ viewport_path = NodePath("Cam POV")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="SpriteCamPOV" type="Sprite2D" parent="UI"]
-position = Vector2(1048, 100)
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(99, 100)
 scale = Vector2(0.363281, 0.363281)
 texture = SubResource("ViewportTexture_eg1oo")
 
@@ -43,20 +43,16 @@ size = 11.252
 visible = false
 mesh = SubResource("BoxMesh_0n036")
 
-[node name="Cam POV" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(707, 512)
 render_target_clear_mode = 1
 
-[node name="Node3D" type="Node3D" parent="Cam POV" node_paths=PackedStringArray("player", "fish")]
-script = ExtResource("3_llk6a")
-player = NodePath("../../Player")
-fish = NodePath("../../Player/MeshInstance3D/MeshInstance3D/FishParent/Fish")
-
-[node name="Camera3D" type="Camera3D" parent="Cam POV/Node3D"]
-transform = Transform3D(-0.880748, 0.0910525, -0.46475, -0.00512255, 0.979455, 0.2016, 0.473558, 0.179939, -0.862186, -1.30987, 0.719937, -2.08054)
+[node name="Camera3D" type="Camera3D" parent="SubViewport" node_paths=PackedStringArray("fish")]
+transform = Transform3D(-0.629673, 7.81103e-09, -0.77686, -0.1111, 0.989721, 0.0900504, 0.768875, 0.143011, -0.623201, -1.09259, 0.610887, -0.963133)
 cull_mask = 1048546
-fov = 62.9
+fov = 84.1
+script = ExtResource("3_dwdhq")
+fish = NodePath("../../Player/MeshInstance3D/MeshInstance3D/FishParent/Fish")
 
 [node name="Player" parent="." instance=ExtResource("1_siy02")]
 
@@ -67,7 +63,7 @@ mesh = SubResource("PlaceholderMesh_u2nx8")
 transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.71934, 0.738424, -0.505324, 0.446518, 0, 0, 0)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.661004, -0.283976, -0.694573, -0.632112, -0.288071, 0.71934, -0.404361, 0.914534, 0.0109114, 0, 0, 0)
+transform = Transform3D(-0.661004, -0.283975, -0.694573, -0.632112, -0.28807, 0.71934, -0.404361, 0.914535, 0.0109115, 0, 0, 0)
 
 [node name="Level1" parent="." instance=ExtResource("2_fu777")]
 
