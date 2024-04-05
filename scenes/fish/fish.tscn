@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brsa431wwced1"]
+[gd_scene load_steps=18 format=3 uid="uid://brsa431wwced1"]
 
 [ext_resource type="PackedScene" uid="uid://pwbgded5ndhm" path="res://scenes/fish/fish.glb" id="1_0m178"]
 [ext_resource type="Script" path="res://scenes/fish/fish.gd" id="2_rph0c"]
@@ -309,31 +309,71 @@ tracks/5/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.122173), Vector3(0, 0, 0.122173)]
 }
 
+[sub_resource type="Animation" id="Animation_kus6o"]
+resource_name = "sideways"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n1ex5"]
 _data = {
 "RESET": SubResource("Animation_ffnkk"),
 "idle": SubResource("Animation_oy7cm"),
 "idle_ground": SubResource("Animation_rwy1o"),
-"moving": SubResource("Animation_qjkm0")
+"moving": SubResource("Animation_qjkm0"),
+"sideways": SubResource("Animation_kus6o")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_axjh2"]
 animation = &"idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_53t6o"]
+animation = &"idle_ground"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sqc1r"]
 animation = &"moving"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ml5gw"]
+animation = &"sideways"
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_p2pxe"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_r2sbb"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3cbvs"]
 
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbjse"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2tsre"]
-graph_offset = Vector2(-462.186, 50.6658)
+graph_offset = Vector2(-719.853, 268.357)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_axjh2")
 nodes/Idle/position = Vector2(-240, 100)
+nodes/IdleGround/node = SubResource("AnimationNodeAnimation_53t6o")
+nodes/IdleGround/position = Vector2(-340, 540)
 nodes/Moving/node = SubResource("AnimationNodeAnimation_sqc1r")
 nodes/Moving/position = Vector2(-240, 220)
+nodes/Sideways/node = SubResource("AnimationNodeAnimation_ml5gw")
+nodes/Sideways/position = Vector2(-240, 380)
+nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_p2pxe")
+nodes/TimeSeek/position = Vector2(-160, 540)
+nodes/is_grounded/node = SubResource("AnimationNodeBlend2_r2sbb")
+nodes/is_grounded/position = Vector2(260, 240)
 nodes/is_moving/node = SubResource("AnimationNodeBlend2_3cbvs")
 nodes/is_moving/position = Vector2(0, 120)
-node_connections = [&"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_moving"]
+nodes/output/position = Vector2(680, 360)
+nodes/struggle_height/node = SubResource("AnimationNodeBlend2_wbjse")
+nodes/struggle_height/position = Vector2(0, 460)
+node_connections = [&"TimeSeek", 0, &"IdleGround", &"is_grounded", 0, &"is_moving", &"is_grounded", 1, &"struggle_height", &"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_grounded", &"struggle_height", 0, &"Sideways", &"struggle_height", 1, &"TimeSeek"]
 
 [node name="Fish" instance=ExtResource("1_0m178")]
 script = ExtResource("2_rph0c")
@@ -362,4 +402,7 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeBlendTree_2tsre")
 anim_player = NodePath("../AnimationPlayer")
+parameters/TimeSeek/seek_request = -1.0
+parameters/is_grounded/blend_amount = 0.0
 parameters/is_moving/blend_amount = 0.0
+parameters/struggle_height/blend_amount = 0.5

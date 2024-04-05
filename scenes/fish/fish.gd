@@ -20,6 +20,15 @@ func play_anim(animation: String):
 func set_moving(is_moving: bool):
     is_moving_bool = is_moving
     
+    if is_moving:
+        animation_tree.set("parameters/TimeSeek/seek_request", 0.0)
+        animation_tree.set("parameters/struggle_height/blend_amount", 2)
+    else:
+        animation_tree.set("parameters/struggle_height/blend_amount", 1)
+
+func set_grounded(is_grounded: bool):
+    animation_tree.set("parameters/is_grounded/blend_amount", 1 if is_grounded else 0)
+    
 func _process(delta):
     if is_moving_bool and is_moving_float < 1:
         is_moving_float = is_moving_float + is_moving_transition_speed * delta

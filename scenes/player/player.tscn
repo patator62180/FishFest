@@ -29,7 +29,9 @@ size = Vector3(1.78653, 1.42535, 2.08936)
 script = ExtResource("1_u8nd1")
 fish = NodePath("FishParent/Fish")
 move_time = 0.25
+move_time_struggle = 0.7
 move_distance = 1.0
+move_distance_struggle = 2.0
 rotation_speed = 2.0
 
 [node name="Body" type="StaticBody3D" parent="."]
@@ -58,6 +60,7 @@ shape = SubResource("BoxShape3D_d52er")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Fish" parent="FishParent" instance=ExtResource("2_wnppa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Player" type="Area3D" parent="FishParent"]
 

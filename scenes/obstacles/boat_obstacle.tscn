@@ -18,6 +18,7 @@ kill_switch = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.124123, 0.538712, 0.891492)
 
 [node name="Boat" parent="BoatParent" instance=ExtResource("1_6rhpd")]
+transform = Transform3D(1, 0, 0, 0, 0.995913, -0.0903197, 0, 0.0903197, 0.995913, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="BoatParent"]
 
