@@ -78,10 +78,10 @@ transparent_bg = true
 size = Vector2i(707, 512)
 render_target_clear_mode = 1
 
-[node name="Node3D" type="Node3D" parent="Cam POV" node_paths=PackedStringArray("player", "fish")]
+[node name="Node3D" type="Node3D" parent="Cam POV" node_paths=PackedStringArray("target_position", "target_rotation")]
 script = ExtResource("3_llk6a")
-player = NodePath("../../Player")
-fish = NodePath("../../Player/MeshInstance3D/MeshInstance3D/FishParent/Fish")
+target_position = NodePath("../../Player/MeshInstance3D/MeshInstance3D/FishParent/Player")
+target_rotation = NodePath("../../Player/MeshInstance3D")
 
 [node name="Camera3D" type="Camera3D" parent="Cam POV/Node3D"]
 transform = Transform3D(-0.880748, 0.0910525, -0.46475, -0.00512255, 0.979455, 0.2016, 0.473558, 0.179939, -0.862186, -1.30987, 0.719937, -2.08054)
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5266, 0, -0.200001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Level2" parent="Levels" instance=ExtResource("6_47kk3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -39.5)
 
 [node name="EndGoal" parent="." instance=ExtResource("10_gc51s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.155, 0.215, 5.376)

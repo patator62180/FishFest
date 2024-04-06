@@ -24,7 +24,7 @@ size = Vector3(0.25, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d52er"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xstlj"]
-size = Vector3(1.78653, 1.42535, 2.08936)
+size = Vector3(1.00706, 1.08865, 1.1803)
 
 [node name="Player" type="Node3D" node_paths=PackedStringArray("fish") groups=["Player"]]
 script = ExtResource("1_u8nd1")
@@ -33,7 +33,7 @@ move_time = 0.25
 move_time_struggle = 0.7
 move_distance = 1.0
 move_distance_struggle = 2.0
-rotation_speed = 2.0
+rotation_time = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 3
@@ -76,9 +76,12 @@ skeleton = NodePath("FishParent")
 [node name="Player" type="Area3D" parent="MeshInstance3D/MeshInstance3D/FishParent"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D/FishParent/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018631, 0.212677, -0.247803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0282859, 0.0443278, -0.0776986)
 shape = SubResource("BoxShape3D_xstlj")
 
 [node name="Bones" parent="MeshInstance3D" instance=ExtResource("3_x5obm")]
 transform = Transform3D(3.61999e-06, 1, 2.53518e-06, 1, -3.61999e-06, 0, 9.17733e-12, 2.53518e-06, -1, 0, 0, 0)
 visible = false
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)

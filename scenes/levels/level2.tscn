@@ -17,12 +17,12 @@ size = Vector3(20, 1, 1)
 [node name="Level2" type="Node3D"]
 
 [node name="Sand" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_sdoaf")
 
 [node name="LevelTransition" parent="." instance=ExtResource("1_p0h2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
 transition_to = 1
 
 [node name="CollisionShape3D" parent="LevelTransition" index="0"]
@@ -30,17 +30,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_rws21")
 
 [node name="BalloonObstacle" parent="." instance=ExtResource("2_8r304")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 targets = Array[Vector3]([Vector3(10, 0, 0), Vector3(-20, 0, 0)])
 movement_speed = 0.2
 
 [node name="BalloonObstacle2" parent="." instance=ExtResource("2_8r304")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
 targets = Array[Vector3]([Vector3(15, 0, 0), Vector3(-30, 0, 0)])
 movement_speed = 0.2
 
 [node name="Towel" parent="." instance=ExtResource("3_r1f20")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.49063, -0.69, -11.5195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -12)
 
 [connection signal="area_exited" from="LevelTransition" to="LevelTransition" method="_on_area_exited"]
 

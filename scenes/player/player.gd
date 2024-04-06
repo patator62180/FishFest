@@ -10,12 +10,16 @@ enum PlayerMovementType { Swim, Struggle }
 @export var move_time_struggle: float
 @export var move_distance: float
 @export var move_distance_struggle: float
-@export var rotation_speed: float
 
 var current_move_time: float
 
+@export var rotation_time: float
+
+
 @onready var fish_parent: Node3D = $MeshInstance3D/MeshInstance3D/FishParent
 @onready var bones: Node3D = $MeshInstance3D/Bones
+@onready var raycast: RayCast3D = $RayCast3D
+@onready var rotate_parent: Node3D = $MeshInstance3D
 
 var input_stack: Array
 
@@ -26,6 +30,7 @@ var rotation_start: float
 var rotation_target: float
 
 var move_timer: float
+var rotation_timer: float
 
 var movement_type: PlayerMovementType
 
@@ -58,15 +63,16 @@ func move(delta):
     start_moving()
     process_move(delta)
 
-func start_moving():   
-    if move_timer == current_move_time and not input_stack.is_empty():
+func start_moving():
+    if move_timer >= current_move_time and not input_stack.is_empty():
         current_move_time = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle
         var current_move_distance = move_distance if movement_type == PlayerMovementType.Swim else move_distance_struggle
         
         move_timer = 0
+        rotation_timer = 0
         
         move_start = position
-        rotation_start = rotation.y
+        rotation_start = rotate_parent.rotation.y
         
         match input_stack.back():
             "left":
@@ -85,9 +91,21 @@ func start_moving():
         if movement_type == PlayerMovementType.Struggle:
             input_stack.clear()     
                 
-        fish.set_moving(true)
+        
+        raycast.rotation.y = rotation_target
+        raycast.force_raycast_update()
+        
+        if raycast.is_colliding():
+            move_timer = current_move_time
+            fish.set_moving(false)
+        else:
+            fish.set_moving(true)
         
 func process_move(delta):
+    if rotation_timer < rotation_time:
+        rotation_timer = rotation_timer + delta
+        rotate_parent.rotation.y = lerp_angle(rotation_start, rotation_target, min(1, rotation_timer / rotation_time))
+    
     if move_timer >= current_move_time:
         return
     
@@ -95,8 +113,6 @@ func process_move(delta):
         move_timer = move_timer + delta
         position = lerp(move_start, move_target, move_timer / current_move_time)
         
-        rotation.y = lerp_angle(rotation_start, rotation_target, min(1, move_timer / current_move_time * rotation_speed))
-    
     if move_timer >= current_move_time:
         move_timer = current_move_time
         position = move_target
@@ -125,9 +141,7 @@ func _input(event):
         
     #debug wesh
     if event.is_action_pressed("ui_select"):
-        movement_type = PlayerMovementType.Swim if movement_type == PlayerMovementType.Struggle else PlayerMovementType.Struggle
-        fish.set_grounded(movement_type == PlayerMovementType.Struggle)
-        move_timer = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle
+        transition_to_movement_type(PlayerMovementType.Swim if movement_type == PlayerMovementType.Struggle else PlayerMovementType.Struggle)
 
 func die():
     if !is_dead:
@@ -161,3 +175,4 @@ func transition_to_movement_type(type: PlayerMovementType):
     
     movement_type = type
     fish.set_grounded(movement_type == PlayerMovementType.Struggle)
+    raycast.target_position.z = - move_distance if movement_type == PlayerMovementType.Swim else - move_distance_struggle

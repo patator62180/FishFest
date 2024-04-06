@@ -38,7 +38,6 @@ func _process(delta):
     
     if (go_back and highest_player_z > target_z) or (highest_player_z < target_z and not go_back):
         target_z = lerp(target_z, highest_player_z, catchup_speed)
-        
     
     var average = (target_z + player.position.z) / 2
     
@@ -50,6 +49,9 @@ func _process(delta):
     if go_back and rotation_degrees.y != 180:
         rotation_degrees.y = lerp(rotation_degrees.y, 180.0, 0.05)
         if rotation_degrees.y >= 180 : rotation_degrees.y = 180
+        
+    position.z =  player.position.z
+    
         
 func game_over():
     if !is_moving:
