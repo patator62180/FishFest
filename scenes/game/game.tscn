@@ -102,9 +102,6 @@ transform = Transform3D(-0.661004, -0.283976, -0.694573, -0.632112, -0.288071, 0
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")
 
-[node name="glasses - pickup" parent="." instance=ExtResource("6_xxfpe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 0, -41.2)
-
 [node name="glasses - pickup2" parent="." instance=ExtResource("6_xxfpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5266, 0, -0.200001)
 
@@ -114,7 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5266, 0, -0.200001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Level2" parent="Levels" instance=ExtResource("6_47kk3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -39.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.5)
 
 [node name="EndGoal" parent="." instance=ExtResource("10_gc51s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.155, 0.215, 5.376)

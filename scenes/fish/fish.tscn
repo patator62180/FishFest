@@ -355,7 +355,7 @@ animation = &"sideways"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbjse"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2tsre"]
-graph_offset = Vector2(-485.886, 115.971)
+graph_offset = Vector2(-794.728, 98.2741)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_axjh2")
 nodes/Idle/position = Vector2(-240, 100)
 nodes/IdleGround/node = SubResource("AnimationNodeAnimation_53t6o")
@@ -378,6 +378,7 @@ node_connections = [&"TimeSeek", 0, &"IdleGround", &"is_grounded", 0, &"is_movin
 [node name="Fish" instance=ExtResource("1_0m178")]
 script = ExtResource("2_rph0c")
 is_moving_transition_speed = 10.0
+is_grounded_transition_speed = 10.0
 
 [node name="Body" parent="." index="0"]
 layers = 3
