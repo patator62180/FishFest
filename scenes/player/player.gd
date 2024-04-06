@@ -17,6 +17,8 @@ enum PlayerMovementType { Swim, Struggle }
 
 var input_stack: Array
 
+var glasses_on: float = 1
+
 var move_start: Vector3
 var move_target: Vector3
 
@@ -63,23 +65,23 @@ func start_moving():
         
         match input_stack.back():
             "left":
-                move_target = position + Vector3.LEFT * current_move_distance
-                rotation_target = 90.0
+                move_target = position + Vector3.LEFT * current_move_distance * glasses_on
+                rotation_target = 90.0 * glasses_on
             "right":
-                move_target = position + Vector3.RIGHT * current_move_distance
-                rotation_target = 270
+                move_target = position + Vector3.RIGHT * current_move_distance * glasses_on
+                rotation_target = 270 * glasses_on
                 
                 if rotation_start == 0:
-                    rotation_start = 360
+                    rotation_start = 360 * glasses_on
             "up":
-                move_target = position + Vector3.FORWARD * current_move_distance
-                rotation_target = 0.0
+                move_target = position + Vector3.FORWARD * current_move_distance * glasses_on
+                rotation_target = 90 * (glasses_on-1)
                 
                 if rotation_start == 270:
                     rotation_start = -90
             "down":
-                move_target = position + Vector3.BACK * current_move_distance
-                rotation_target = 180  
+                move_target = position + Vector3.BACK * current_move_distance *  glasses_on
+                rotation_target = 90 * (glasses_on+1)
         
         if movement_type == PlayerMovementType.Struggle:
             input_stack.clear()     
@@ -145,6 +147,7 @@ func die():
         
 func put_on_glasses():
     fish.put_on_glasses()
+    glasses_on = -1
         
 func transition_to_movement_type(type: PlayerMovementType):
     movement_type = type

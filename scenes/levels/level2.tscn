@@ -19,7 +19,7 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_sdoaf")
 
 [node name="LevelTransition" parent="." instance=ExtResource("1_p0h2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.1466)
 transition_to = 1
 
 [node name="BalloonObstacle" parent="." instance=ExtResource("2_8r304")]
@@ -34,3 +34,5 @@ movement_speed = 0.2
 
 [node name="Towel" parent="." instance=ExtResource("3_r1f20")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.49063, -0.69, -11.5195)
+
+[connection signal="area_exited" from="LevelTransition" to="LevelTransition" method="_on_area_exited"]

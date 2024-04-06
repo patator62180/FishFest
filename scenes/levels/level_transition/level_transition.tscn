@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/level_transition/level_transition.gd" id="1_g88x8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h7jej"]
-size = Vector3(20, 3, 1)
+size = Vector3(20, 3, 30.075)
 
 [node name="LevelTransition" type="Area3D"]
 script = ExtResource("1_g88x8")

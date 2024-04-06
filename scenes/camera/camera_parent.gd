@@ -15,6 +15,8 @@ class_name GameCamera
 var target_z: float
 var highest_player_z: float
 
+var glasses_on: bool = false
+
 static var instance: GameCamera
 
 var is_moving: bool
@@ -42,9 +44,16 @@ func _process(delta):
     
     dummy_look_at.global_position.x = lerp(dummy_look_at.global_position.x, player.global_position.x * dummy_dampening, dummy_speed)
     camera.look_at(dummy_look_at.global_position, Vector3.UP)
-
+    
+    if glasses_on and (rotation_degrees.y!=180):
+        rotation_degrees.y = lerp(rotation_degrees.y, 180.0, 0.05)
+        if rotation_degrees.y>179.95 : rotation_degrees.y = 180
+        
 func game_over():
     if !is_moving:
         return
         
     is_moving = false
+
+func turn_camera():
+    glasses_on = true

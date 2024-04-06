@@ -5,3 +5,9 @@ extends Area3D
 func _on_area_entered(area):
     if area.name == "Player":
         Player.instance.transition_to_movement_type(transition_to)
+
+
+
+func _on_area_exited(area):
+    if area.name == "Player":
+        Player.instance.transition_to_movement_type(0)
