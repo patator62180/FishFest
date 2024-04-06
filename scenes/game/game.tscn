@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=12 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/camera/camera_parent.gd" id="2_q0fbw"]
 [ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
 [ext_resource type="PackedScene" uid="uid://dl2vajlt2r5da" path="res://scenes/levels/level2.tscn" id="6_47kk3"]
+[ext_resource type="PackedScene" uid="uid://byp7vvsei1jru" path="res://scenes/glasses/glasses_pickup.tscn" id="6_xxfpe"]
 [ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
@@ -71,6 +72,9 @@ transform = Transform3D(-0.661004, -0.283976, -0.694573, -0.632112, -0.288071, 0
 
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")
+
+[node name="glasses - pickup" parent="." instance=ExtResource("6_xxfpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.66095, 0, -39.7936)
 
 [node name="Levels" type="Node3D" parent="."]
 
