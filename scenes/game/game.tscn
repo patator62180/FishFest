@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=14 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_4j0me"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dl2vajlt2r5da" path="res://scenes/levels/level2.tscn" id="6_47kk3"]
 [ext_resource type="PackedScene" uid="uid://byp7vvsei1jru" path="res://scenes/glasses/glasses_pickup.tscn" id="6_xxfpe"]
 [ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
+[ext_resource type="PackedScene" uid="uid://byp2hs35587k1" path="res://scenes/end_goal/end_goal.tscn" id="10_gc51s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
 viewport_path = NodePath("Cam POV")
@@ -66,9 +67,6 @@ fov = 62.9
 [node name="MeshInstance3D" parent="Player" index="0"]
 mesh = SubResource("PlaceholderMesh_u2nx8")
 
-[node name="Bones" parent="Player/MeshInstance3D" index="2"]
-transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.71934, 0.738424, -0.505324, 0.446518, 0, 0, 0)
 
@@ -79,7 +77,7 @@ transform = Transform3D(-0.661004, -0.283976, -0.694573, -0.632112, -0.288071, 0
 script = ExtResource("8_ulr11")
 
 [node name="glasses - pickup" parent="." instance=ExtResource("6_xxfpe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 0, -41.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67872, 0, -2.96077)
 
 [node name="Levels" type="Node3D" parent="."]
 
@@ -88,6 +86,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Level2" parent="Levels" instance=ExtResource("6_47kk3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="EndGoal" parent="." instance=ExtResource("10_gc51s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.155, 0.215, 5.376)
 
 [editable path="CameraParent"]
 [editable path="Player"]
