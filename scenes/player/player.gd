@@ -138,6 +138,7 @@ func die():
         
         fish_parent.visible = false
         bones.visible = true
+        bones.appear()
         
         GameCamera.instance.game_over()
         

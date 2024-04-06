@@ -80,5 +80,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018631, 0.212677, -0.24780
 shape = SubResource("BoxShape3D_xstlj")
 
 [node name="Bones" parent="MeshInstance3D" instance=ExtResource("3_x5obm")]
-transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
 visible = false
