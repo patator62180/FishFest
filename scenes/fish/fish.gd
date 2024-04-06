@@ -29,6 +29,9 @@ func set_moving(is_moving: bool):
 func set_grounded(is_grounded: bool):
     animation_tree.set("parameters/is_grounded/blend_amount", 1 if is_grounded else 0)
     
+func put_on_glasses():
+    glasses.visible = true
+    
 func _process(delta):
     if is_moving_bool and is_moving_float < 1:
         is_moving_float = is_moving_float + is_moving_transition_speed * delta

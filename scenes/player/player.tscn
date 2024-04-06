@@ -26,7 +26,7 @@ size = Vector3(0.25, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xstlj"]
 size = Vector3(1.78653, 1.42535, 2.08936)
 
-[node name="Player" type="Node3D" node_paths=PackedStringArray("fish")]
+[node name="Player" type="Node3D" node_paths=PackedStringArray("fish") groups=["Player"]]
 script = ExtResource("1_u8nd1")
 fish = NodePath("MeshInstance3D/MeshInstance3D/FishParent/Fish")
 move_time = 0.25

@@ -143,6 +143,9 @@ func die():
 
         get_tree().reload_current_scene()
         
+func put_on_glasses():
+    fish.put_on_glasses()
+        
 func transition_to_movement_type(type: PlayerMovementType):
     movement_type = type
     fish.set_grounded(movement_type == PlayerMovementType.Struggle)

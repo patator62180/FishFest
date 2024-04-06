@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=13 format=3 uid="uid://cpywa3bj60gk2"]
 
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_4j0me"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
@@ -17,6 +18,7 @@ viewport_path = NodePath("Cam POV")
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_u2nx8"]
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_4j0me")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -64,9 +66,6 @@ fov = 62.9
 [node name="MeshInstance3D" parent="Player" index="0"]
 mesh = SubResource("PlaceholderMesh_u2nx8")
 
-[node name="Fish" parent="Player/MeshInstance3D/MeshInstance3D/FishParent" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.71934, 0.738424, -0.505324, 0.446518, 0, 0, 0)
 
@@ -76,9 +75,8 @@ transform = Transform3D(-0.661004, -0.283976, -0.694573, -0.632112, -0.288071, 0
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")
 
-[node name="glasses - pickup" parent="." node_paths=PackedStringArray("fish") instance=ExtResource("6_xxfpe")]
+[node name="glasses - pickup" parent="." instance=ExtResource("6_xxfpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42257, 0, -41.1762)
-fish = NodePath("../Player/MeshInstance3D/MeshInstance3D/FishParent/Fish")
 
 [node name="Levels" type="Node3D" parent="."]
 

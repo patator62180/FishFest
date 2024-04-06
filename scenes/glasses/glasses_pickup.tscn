@@ -68,7 +68,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_j6y4b"]
 size = Vector3(1.84, 0.865, 1.27)
 
-[node name="glasses - pickup" instance=ExtResource("1_xhucp")]
+[node name="glasses - pickup" groups=["Glasses"] instance=ExtResource("1_xhucp")]
 script = ExtResource("2_65sx0")
 
 [node name="Glasses" parent="." index="0"]
