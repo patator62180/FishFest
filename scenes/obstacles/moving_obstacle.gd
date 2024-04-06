@@ -138,7 +138,6 @@ func _on_area_3d_area_entered(area):
         return
         
     if area.name == "Player":
-        #get_tree().reload_current_scene()
         Player.instance.die()
         
 func generate_warning_one_way():

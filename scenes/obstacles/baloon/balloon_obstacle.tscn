@@ -13,34 +13,6 @@ height = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_87jrs"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="Animation" id="Animation_qtmuq"]
-resource_name = "bounce"
-length = 2.0
-loop_mode = 1
-step = 0.01
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BalloonParent:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.1, 1.50811, 4, -0.6, 0.0600677, 0.6, -0.0614541, 0, -0.1, 1.4595, 0, 0.00123414),
-"times": PackedFloat32Array(0, 1, 2)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BalloonParent/MeshInstance3D:rotation:z")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.98, 3.13677, 3.14, -1, -3.15794, 1, 3.15148, 6.28, -1.01, -3.1165, 0.25, 0),
-"times": PackedFloat32Array(0, 0.99, 1.99)
-}
-
 [sub_resource type="Animation" id="Animation_aiuxn"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -97,6 +69,34 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qtmuq"]
+resource_name = "bounce"
+length = 2.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BalloonParent:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, 1.50811, 4, -0.6, 0.0600677, 0.6, -0.0614541, 0, -0.1, 1.4595, 0, 0.00123414),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BalloonParent/MeshInstance3D:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.98, 3.13677, 3.14, -1, -3.15794, 1, 3.15148, 6.28, -1.01, -3.1165, 0.25, 0),
+"times": PackedFloat32Array(0, 0.99, 1.99)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3t7d8"]

@@ -12,12 +12,12 @@ enum PlayerMovementType { Swim, Struggle }
 @export var move_distance_struggle: float
 @export var rotation_speed: float
 
+var current_move_time: float
+
 @onready var fish_parent: Node3D = $MeshInstance3D/MeshInstance3D/FishParent
 @onready var bones: Node3D = $MeshInstance3D/Bones
 
 var input_stack: Array
-
-var glasses_on: float = 1
 
 var move_start: Vector3
 var move_target: Vector3
@@ -30,17 +30,22 @@ var move_timer: float
 var movement_type: PlayerMovementType
 
 var is_dead: bool
+var is_wearing_glasses: bool
 
 static var instance: Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     move_timer = move_time
+    current_move_time = move_time 
+    
     fish.set_moving(false)
     instance = self
     is_dead = false
+    is_wearing_glasses = false
     
     movement_type = PlayerMovementType.Swim
+    
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -53,35 +58,29 @@ func move(delta):
     start_moving()
     process_move(delta)
 
-func start_moving():
-    var current_move_time = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle
-    var current_move_distance = move_distance if movement_type == PlayerMovementType.Swim else move_distance_struggle
-    
+func start_moving():   
     if move_timer == current_move_time and not input_stack.is_empty():
+        current_move_time = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle
+        var current_move_distance = move_distance if movement_type == PlayerMovementType.Swim else move_distance_struggle
+        
         move_timer = 0
         
         move_start = position
-        rotation_start = rotation_degrees.y if rotation_degrees.y < 360 else 0.0
+        rotation_start = rotation.y
         
         match input_stack.back():
             "left":
-                move_target = position + Vector3.LEFT * current_move_distance * glasses_on
-                rotation_target = 90.0 * glasses_on
+                move_target = position + Vector3.LEFT * current_move_distance
+                rotation_target = PI / 2
             "right":
-                move_target = position + Vector3.RIGHT * current_move_distance * glasses_on
-                rotation_target = 270 * glasses_on
-                
-                if rotation_start == 0:
-                    rotation_start = 360 * glasses_on
+                move_target = position + Vector3.RIGHT * current_move_distance
+                rotation_target = PI * 1.5
             "up":
-                move_target = position + Vector3.FORWARD * current_move_distance * glasses_on
-                rotation_target = 90 * (glasses_on-1)
-                
-                if rotation_start == 270:
-                    rotation_start = -90
+                move_target = position + Vector3.FORWARD * current_move_distance
+                rotation_target = 0.0
             "down":
-                move_target = position + Vector3.BACK * current_move_distance *  glasses_on
-                rotation_target = 90 * (glasses_on+1)
+                move_target = position + Vector3.BACK * current_move_distance
+                rotation_target = PI
         
         if movement_type == PlayerMovementType.Struggle:
             input_stack.clear()     
@@ -89,8 +88,6 @@ func start_moving():
         fish.set_moving(true)
         
 func process_move(delta):
-    var current_move_time = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle
-    
     if move_timer >= current_move_time:
         return
     
@@ -98,7 +95,7 @@ func process_move(delta):
         move_timer = move_timer + delta
         position = lerp(move_start, move_target, move_timer / current_move_time)
         
-        rotation_degrees.y = lerp(rotation_start, rotation_target, min(1, move_timer / current_move_time * rotation_speed))
+        rotation.y = lerp_angle(rotation_start, rotation_target, min(1, move_timer / current_move_time * rotation_speed))
     
     if move_timer >= current_move_time:
         move_timer = current_move_time
@@ -109,22 +106,22 @@ func process_move(delta):
         
 func _input(event):
     if event.is_action_pressed("ui_left"):
-        input_stack.append("left")
+        input_stack.append("left" if !is_wearing_glasses else "right")
     if event.is_action_pressed("ui_right"):
-        input_stack.append("right")
+        input_stack.append("right" if !is_wearing_glasses else "left")
     if event.is_action_pressed("ui_up"):
-        input_stack.append("up")
+        input_stack.append("up" if !is_wearing_glasses else "down")
     if event.is_action_pressed("ui_down"):
-        input_stack.append("down")
+        input_stack.append("down" if !is_wearing_glasses else "up")
     
     if event.is_action_released("ui_left"):
-        input_stack.erase("left")
+        input_stack.erase("left" if !is_wearing_glasses else "right")
     if event.is_action_released("ui_right"):
-        input_stack.erase("right")
+        input_stack.erase("right" if !is_wearing_glasses else "left")
     if event.is_action_released("ui_up"):
-        input_stack.erase("up")
+        input_stack.erase("up" if !is_wearing_glasses else "down")
     if event.is_action_released("ui_down"):
-        input_stack.erase("down")
+        input_stack.erase("down" if !is_wearing_glasses else "up")
         
     #debug wesh
     if event.is_action_pressed("ui_select"):
@@ -145,12 +142,22 @@ func die():
         await get_tree().create_timer(3).timeout
 
         get_tree().reload_current_scene()
+
+func win():
+    if is_wearing_glasses:
+        die()
         
 func put_on_glasses():
     fish.put_on_glasses()
-    glasses_on = -1
+    is_wearing_glasses = true
+    
+    input_stack.clear()
         
 func transition_to_movement_type(type: PlayerMovementType):
+    if movement_type == type:
+        return
+    
+    input_stack.clear()
+    
     movement_type = type
     fish.set_grounded(movement_type == PlayerMovementType.Struggle)
-    move_timer = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle

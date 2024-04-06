@@ -1,6 +1,5 @@
 [gd_scene load_steps=14 format=3 uid="uid://cpywa3bj60gk2"]
 
-[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_4j0me"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
@@ -11,6 +10,33 @@
 [ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
 [ext_resource type="PackedScene" uid="uid://byp2hs35587k1" path="res://scenes/end_goal/end_goal.tscn" id="10_gc51s"]
 
+[sub_resource type="GDScript" id="GDScript_j6dg8"]
+script/source = "extends Node3D
+
+#@onready var player: Player = get_tree().get_first_node_in_group(\"Player\")
+#@onready var camera_parent: Node3D = $CameraParent
+#
+#func _ready():
+    #var glasses: Glasses = get_tree().get_first_node_in_group(\"Glasses\")
+    #var end_goal: EndGoal = get_tree().get_first_node_in_group(\"EndGoal\")
+       #
+    #if glasses != null:
+        #glasses.glasses_picked_up.connect(on_glasses_picked_up)
+        #
+    #if end_goal != null:
+        #end_goal.level_won.connect(on_level_won)
+        #
+#func on_glasses_picked_up(glasses: Glasses):
+    #glasses.queue_free()
+    #if player != null:
+        #player.put_on_glasses()
+    #camera_parent.turn_camera()
+#
+#func on_level_won(end_goal: EndGoal):
+     #if (player.glasses_on != 1):
+        #print(\"gagne\")
+"
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
 viewport_path = NodePath("Cam POV")
 
@@ -19,7 +45,7 @@ viewport_path = NodePath("Cam POV")
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_u2nx8"]
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_4j0me")
+script = SubResource("GDScript_j6dg8")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -78,6 +104,9 @@ script = ExtResource("8_ulr11")
 
 [node name="glasses - pickup" parent="." instance=ExtResource("6_xxfpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 0, -41.2)
+
+[node name="glasses - pickup2" parent="." instance=ExtResource("6_xxfpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5266, 0, -0.200001)
 
 [node name="Levels" type="Node3D" parent="."]
 
