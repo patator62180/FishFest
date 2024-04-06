@@ -111,7 +111,15 @@ func _process(delta):
                 target_end = targets[0]
                 refresh_movement_duration()
                 rotation.y = get_rotation_for_segment()
+                position = target_start
                 movement_started = true
+                wait_timer = 0
+                
+                generate_warning_one_way()
+            
+            if wait_timer < wait_duration:
+                wait_timer = min(wait_timer + delta, wait_duration)
+                return
             
             movement_timer = min(movement_timer + delta, movement_duration)
             position = lerp(target_start, target_end, movement_timer / movement_duration)
@@ -130,7 +138,8 @@ func _on_area_3d_area_entered(area):
         return
         
     if area.name == "Player":
-        get_tree().reload_current_scene()
+        #get_tree().reload_current_scene()
+        Player.instance.die()
         
 func generate_warning_one_way():
     ObstacleWarningFactory.instance.generate_warning(target_start, rotation, movement_duration / movement_speed, wait_duration, warning_width)

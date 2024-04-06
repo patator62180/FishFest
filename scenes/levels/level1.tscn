@@ -1,37 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://db8vs710eb7mq"]
+[gd_scene load_steps=4 format=3 uid="uid://db8vs710eb7mq"]
 
 [ext_resource type="PackedScene" uid="uid://chksqebqkb0bi" path="res://scenes/water/water_wind_waker.tscn" id="1_5n7ux"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqc20"]
-transparency = 1
-albedo_color = Color(0.137255, 0.345098, 0.517647, 0.721569)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1udkp"]
-material = SubResource("StandardMaterial3D_iqc20")
-size = Vector2(40, 10)
-center_offset = Vector3(19.5, 0, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gjn2"]
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.121569, 0.0705882, 0.00784314, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_bwybj"]
-material = SubResource("StandardMaterial3D_0gjn2")
+[ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="2_y1vtf"]
+[ext_resource type="PackedScene" uid="uid://cqsivhg1nmyks" path="res://scenes/obstacles/boat_obstacle.tscn" id="3_4imwq"]
 
 [node name="Level1" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("PlaneMesh_1udkp")
-skeleton = NodePath("")
 
 [node name="WaterWindWaker" parent="." instance=ExtResource("1_5n7ux")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="WaterWindWaker2" parent="." instance=ExtResource("1_5n7ux")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, 8.74228e-07)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 8.74228e-07, 0, -20)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(19.915, 0, 0, 0, 19.915, 0, 0, 0, 19.915, 11.3517, -3.26181, 4.96199e-07)
-mesh = SubResource("PlaneMesh_bwybj")
+[node name="SharkObstacle" parent="." instance=ExtResource("2_y1vtf")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, -30)
+
+[node name="Shark2" parent="SharkObstacle/SharkParent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="BoatObstacle" parent="." instance=ExtResource("3_4imwq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -8)
+targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
+movement_speed = 0.1
+rotation_duration = 1.0
+
+[node name="BoatObstacle3" parent="." instance=ExtResource("3_4imwq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -26)
+targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
+movement_speed = 0.1
+rotation_duration = 1.0
+
+[node name="BoatObstacle4" parent="." instance=ExtResource("3_4imwq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -17)
+targets = Array[Vector3]([Vector3(-25, 0, 0), Vector3(50, 0, 0)])
+movement_speed = 0.1
+wait_duration = 2.0
+rotation_duration = 1.0
+
+[node name="BoatObstacleBatard" parent="." instance=ExtResource("3_4imwq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, -40)
+movement_type = 2
+targets = Array[Vector3]([Vector3(0, 0, 100)])
+movement_speed = 0.1
+wait_duration = 3.0
+rotation_duration = 1.0
+
+[editable path="SharkObstacle"]

@@ -10,6 +10,9 @@ func _ready():
     instance = self
 
 func generate_warning(origin: Vector3, rotation: Vector3, length: float, duration: float, width: float):
+    if width == 0 or duration == 0 or length == 0:
+        return
+    
     var warning = warning_prefab.instantiate() as Node3D
     
     add_child(warning)

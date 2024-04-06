@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name GameCamera
+
 @export var camera: Camera3D
 @export var player: Player
 @export var dummy_look_at: Node3D
@@ -13,13 +15,20 @@ extends Node3D
 var target_z: float
 var highest_player_z: float
 
+static var instance: GameCamera
+
+var is_moving: bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
-
+    instance = self
+    is_moving = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+    if !is_moving:
+        return
+        
     highest_player_z = min(highest_player_z, player.position.z)
     
     target_z = target_z - delta * camera_speed
@@ -33,3 +42,9 @@ func _process(delta):
     
     dummy_look_at.global_position.x = lerp(dummy_look_at.global_position.x, player.global_position.x * dummy_dampening, dummy_speed)
     camera.look_at(dummy_look_at.global_position, Vector3.UP)
+
+func game_over():
+    if !is_moving:
+        return
+        
+    is_moving = false

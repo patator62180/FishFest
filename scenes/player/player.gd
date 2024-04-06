@@ -12,6 +12,9 @@ enum PlayerMovementType { Swim, Struggle }
 @export var move_distance_struggle: float
 @export var rotation_speed: float
 
+@onready var fish_parent: Node3D = $MeshInstance3D/MeshInstance3D/FishParent
+@onready var bones: Node3D = $MeshInstance3D/Bones
+
 var input_stack: Array
 
 var move_start: Vector3
@@ -24,6 +27,8 @@ var move_timer: float
 
 var movement_type: PlayerMovementType
 
+var is_dead: bool
+
 static var instance: Player
 
 # Called when the node enters the scene tree for the first time.
@@ -31,11 +36,15 @@ func _ready():
     move_timer = move_time
     fish.set_moving(false)
     instance = self
+    is_dead = false
     
     movement_type = PlayerMovementType.Swim
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+    if is_dead:
+        return
+        
     move(delta)
         
 func move(delta):
@@ -122,4 +131,19 @@ func _input(event):
         move_timer = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle
 
 func die():
-    visible = false
+    if !is_dead:
+        is_dead = true
+        
+        fish_parent.visible = false
+        bones.visible = true
+        
+        GameCamera.instance.game_over()
+        
+        await get_tree().create_timer(3).timeout
+
+        get_tree().reload_current_scene()
+        
+func transition_to_movement_type(type: PlayerMovementType):
+    movement_type = type
+    fish.set_grounded(movement_type == PlayerMovementType.Struggle)
+    move_timer = move_time if movement_type == PlayerMovementType.Swim else move_time_struggle

@@ -355,7 +355,7 @@ animation = &"sideways"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbjse"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2tsre"]
-graph_offset = Vector2(-719.853, 268.357)
+graph_offset = Vector2(-485.886, 115.971)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_axjh2")
 nodes/Idle/position = Vector2(-240, 100)
 nodes/IdleGround/node = SubResource("AnimationNodeAnimation_53t6o")
@@ -370,7 +370,7 @@ nodes/is_grounded/node = SubResource("AnimationNodeBlend2_r2sbb")
 nodes/is_grounded/position = Vector2(260, 240)
 nodes/is_moving/node = SubResource("AnimationNodeBlend2_3cbvs")
 nodes/is_moving/position = Vector2(0, 120)
-nodes/output/position = Vector2(680, 360)
+nodes/output/position = Vector2(500, 240)
 nodes/struggle_height/node = SubResource("AnimationNodeBlend2_wbjse")
 nodes/struggle_height/position = Vector2(0, 460)
 node_connections = [&"TimeSeek", 0, &"IdleGround", &"is_grounded", 0, &"is_moving", &"is_grounded", 1, &"struggle_height", &"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_grounded", &"struggle_height", 0, &"Sideways", &"struggle_height", 1, &"TimeSeek"]
@@ -381,6 +381,7 @@ is_moving_transition_speed = 10.0
 
 [node name="Body" parent="." index="0"]
 layers = 3
+cast_shadow = 2
 
 [node name="DorsalFin" parent="." index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0, 0.5, 0)

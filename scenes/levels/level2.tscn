@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl2vajlt2r5da"]
+
+[ext_resource type="PackedScene" uid="uid://eyoee6trxtrn" path="res://scenes/levels/level_transition/level_transition.tscn" id="1_p0h2p"]
+[ext_resource type="PackedScene" uid="uid://ctevnjd1xdl4p" path="res://scenes/obstacles/baloon/balloon_obstacle.tscn" id="2_8r304"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hftrt"]
+albedo_color = Color(0.584314, 0.447059, 0.121569, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sdoaf"]
+material = SubResource("StandardMaterial3D_hftrt")
+size = Vector2(20, 20)
+
+[node name="Level2" type="Node3D"]
+
+[node name="Sand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -10)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_sdoaf")
+
+[node name="LevelTransition" parent="." instance=ExtResource("1_p0h2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2)
+transition_to = 1
+
+[node name="BalloonObstacle" parent="." instance=ExtResource("2_8r304")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -10)
+targets = Array[Vector3]([Vector3(10, 0, 0), Vector3(-20, 0, 0)])
+movement_speed = 0.2
+
+[node name="BalloonObstacle2" parent="." instance=ExtResource("2_8r304")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -19)
+targets = Array[Vector3]([Vector3(15, 0, 0), Vector3(-30, 0, 0)])
+movement_speed = 0.2

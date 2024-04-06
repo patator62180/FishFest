@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=11 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
 [ext_resource type="Script" path="res://scenes/camera/camera_parent.gd" id="2_q0fbw"]
-[ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="3_4yqm6"]
 [ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
-[ext_resource type="PackedScene" uid="uid://cqsivhg1nmyks" path="res://scenes/obstacles/boat_obstacle.tscn" id="4_l0lxb"]
+[ext_resource type="PackedScene" uid="uid://dl2vajlt2r5da" path="res://scenes/levels/level2.tscn" id="6_47kk3"]
 [ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
@@ -64,55 +63,25 @@ fov = 62.9
 [node name="MeshInstance3D" parent="Player" index="0"]
 mesh = SubResource("PlaceholderMesh_u2nx8")
 
+[node name="Fish" parent="Player/MeshInstance3D/MeshInstance3D/FishParent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.234871, 0.813427, 0.532139, -0.632112, -0.28807, 0.71934, 0.738424, -0.505324, 0.446518, 0, 0, 0)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.661004, -0.283976, -0.694573, -0.632112, -0.288071, 0.71934, -0.404361, 0.914534, 0.0109114, 0, 0, 0)
 
-[node name="Level1" parent="." instance=ExtResource("2_fu777")]
-
-[node name="SharkObstacle" parent="." instance=ExtResource("3_4yqm6")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 0, -30)
-
-[node name="Shark2" parent="SharkObstacle/SharkParent" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="lower_back" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="1"]
-transform = Transform3D(0.999996, 0.00136136, 0, -0.00136136, 0.999996, 0, 0, 0, 1, 1.5, -8, -2.5)
-
-[node name="neck" parent="SharkObstacle/SharkParent/Shark2/Shark/body" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -2)
-
-[node name="BoatObstacle" parent="." instance=ExtResource("4_l0lxb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -8)
-targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
-movement_speed = 0.1
-rotation_duration = 1.0
-
-[node name="BoatObstacle3" parent="." instance=ExtResource("4_l0lxb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -26)
-targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-50, 0, 0)])
-movement_speed = 0.1
-rotation_duration = 1.0
-
-[node name="BoatObstacle4" parent="." instance=ExtResource("4_l0lxb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -17)
-targets = Array[Vector3]([Vector3(-25, 0, 0), Vector3(50, 0, 0)])
-movement_speed = 0.1
-rotation_duration = 1.0
-
-[node name="BoatObstacle2" parent="." instance=ExtResource("4_l0lxb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -40)
-movement_type = 2
-targets = Array[Vector3]([Vector3(0, 0, 100)])
-movement_speed = 0.1
-rotation_duration = 1.0
-
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")
 
+[node name="Levels" type="Node3D" parent="."]
+
+[node name="Level1" parent="Levels" instance=ExtResource("2_fu777")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Level2" parent="Levels" instance=ExtResource("6_47kk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
 [editable path="CameraParent"]
 [editable path="Player"]
-[editable path="SharkObstacle"]
-[editable path="SharkObstacle/SharkParent/Shark2"]
