@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjlhg0f2jj2nu"]
+[gd_scene load_steps=7 format=3 uid="uid://bjlhg0f2jj2nu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x2q5t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i80c0"]
 transparency = 1
-albedo_color = Color(0.976471, 0.537255, 0, 1)
+albedo_color = Color(0.976471, 0, 0, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_x2q5t")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lxy05"]
 material = SubResource("StandardMaterial3D_i80c0")
@@ -33,7 +36,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.125, 0, 0.125, 0, 1, -0.125, 0, 0.125, 0, 0, -0.125, 0, 0.125, 0),
+"points": PackedFloat32Array(0, -0.125, 0, 0.125, 0, 0.5, -0.125, 0, 0.125, 0, 0, -0.125, 0, 0.125, 0),
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 
