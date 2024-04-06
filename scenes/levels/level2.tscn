@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl2vajlt2r5da"]
+[gd_scene load_steps=6 format=3 uid="uid://dl2vajlt2r5da"]
 
 [ext_resource type="PackedScene" uid="uid://eyoee6trxtrn" path="res://scenes/levels/level_transition/level_transition.tscn" id="1_p0h2p"]
 [ext_resource type="PackedScene" uid="uid://ctevnjd1xdl4p" path="res://scenes/obstacles/baloon/balloon_obstacle.tscn" id="2_8r304"]
+[ext_resource type="PackedScene" uid="uid://dw4h4vxlopcd0" path="res://scenes/towel/towel01.tscn" id="3_r1f20"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hftrt"]
 albedo_color = Color(0.584314, 0.447059, 0.121569, 1)
@@ -30,3 +31,6 @@ movement_speed = 0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -19)
 targets = Array[Vector3]([Vector3(15, 0, 0), Vector3(-30, 0, 0)])
 movement_speed = 0.2
+
+[node name="Towel" parent="." instance=ExtResource("3_r1f20")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43141, -0.69, -10.8088)
