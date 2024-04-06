@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://byp7vvsei1jru"]
+[gd_scene load_steps=7 format=3 uid="uid://byp7vvsei1jru"]
 
 [ext_resource type="PackedScene" uid="uid://bveq225w5kgrb" path="res://scenes/glasses/glasses - pickup.glb" id="1_xhucp"]
+[ext_resource type="Script" path="res://scenes/glasses/glasses_pickup.gd" id="2_65sx0"]
 
 [sub_resource type="Animation" id="Animation_rnbpg"]
 resource_name = "RESET"
@@ -64,7 +65,11 @@ _data = {
 "idle": SubResource("Animation_enqfs")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6y4b"]
+size = Vector3(1.84, 0.865, 1.27)
+
 [node name="glasses - pickup" instance=ExtResource("1_xhucp")]
+script = ExtResource("2_65sx0")
 
 [node name="Glasses" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -74,3 +79,11 @@ libraries = {
 "": SubResource("AnimationLibrary_1om66")
 }
 autoplay = "idle"
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.100563)
+shape = SubResource("BoxShape3D_j6y4b")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

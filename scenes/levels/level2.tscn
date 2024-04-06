@@ -33,4 +33,4 @@ targets = Array[Vector3]([Vector3(15, 0, 0), Vector3(-30, 0, 0)])
 movement_speed = 0.2
 
 [node name="Towel" parent="." instance=ExtResource("3_r1f20")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43141, -0.69, -10.8088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.49063, -0.69, -11.5195)
