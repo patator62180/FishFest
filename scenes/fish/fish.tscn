@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://brsa431wwced1"]
+[gd_scene load_steps=19 format=3 uid="uid://brsa431wwced1"]
 
 [ext_resource type="PackedScene" uid="uid://pwbgded5ndhm" path="res://scenes/fish/fish.glb" id="1_0m178"]
 [ext_resource type="Script" path="res://scenes/fish/fish.gd" id="2_rph0c"]
@@ -334,6 +334,9 @@ _data = {
 "sideways": SubResource("Animation_kus6o")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w2gq1"]
+animation = &"RESET"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_axjh2"]
 animation = &"idle"
 
@@ -350,12 +353,13 @@ animation = &"sideways"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_r2sbb"]
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3cbvs"]
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_36ale"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbjse"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2tsre"]
-graph_offset = Vector2(-794.728, 98.2741)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_w2gq1")
+nodes/Animation/position = Vector2(-160, 20)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_axjh2")
 nodes/Idle/position = Vector2(-240, 100)
 nodes/IdleGround/node = SubResource("AnimationNodeAnimation_53t6o")
@@ -368,12 +372,12 @@ nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_p2pxe")
 nodes/TimeSeek/position = Vector2(-160, 540)
 nodes/is_grounded/node = SubResource("AnimationNodeBlend2_r2sbb")
 nodes/is_grounded/position = Vector2(260, 240)
-nodes/is_moving/node = SubResource("AnimationNodeBlend2_3cbvs")
+nodes/is_moving/node = SubResource("AnimationNodeBlend3_36ale")
 nodes/is_moving/position = Vector2(0, 120)
 nodes/output/position = Vector2(500, 240)
 nodes/struggle_height/node = SubResource("AnimationNodeBlend2_wbjse")
 nodes/struggle_height/position = Vector2(0, 460)
-node_connections = [&"TimeSeek", 0, &"IdleGround", &"is_grounded", 0, &"is_moving", &"is_grounded", 1, &"struggle_height", &"is_moving", 0, &"Idle", &"is_moving", 1, &"Moving", &"output", 0, &"is_grounded", &"struggle_height", 0, &"Sideways", &"struggle_height", 1, &"TimeSeek"]
+node_connections = [&"TimeSeek", 0, &"IdleGround", &"is_grounded", 0, &"is_moving", &"is_grounded", 1, &"struggle_height", &"is_moving", 0, &"Animation", &"is_moving", 1, &"Idle", &"is_moving", 2, &"Moving", &"output", 0, &"is_grounded", &"struggle_height", 0, &"Sideways", &"struggle_height", 1, &"TimeSeek"]
 
 [node name="Fish" instance=ExtResource("1_0m178")]
 script = ExtResource("2_rph0c")
@@ -413,12 +417,10 @@ tree_root = SubResource("AnimationNodeBlendTree_2tsre")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeSeek/seek_request = -1.0
 parameters/is_grounded/blend_amount = 0.0
-parameters/is_moving/blend_amount = 0.0
+parameters/is_moving/blend_amount = -1.0
 parameters/struggle_height/blend_amount = 0.5
 
 [node name="Glasses" parent="." index="7"]
-layers = 5
+layers = 3
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 0.985288, -0.170905, 0, 0.170905, 0.985288, 0, -0.618026, 3.81903)
-layers = 4
+[node name="Fish Idle" type="AudioStreamPlayer" parent="." index="8"]

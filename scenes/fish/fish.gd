@@ -16,6 +16,7 @@ var is_grounded_bool: bool
 var is_grounded_float: float
 
 func _ready():
+    animation_tree.set("parameters/is_moving/blend_amount", 0)
     glasses.visible = false
 
 func play_anim(animation: String):
