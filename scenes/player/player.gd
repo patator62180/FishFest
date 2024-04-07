@@ -125,27 +125,38 @@ func process_move(delta):
             fish.set_moving(false) 
         
 func _input(event):
+    var direction = ""
+    var pressed = true
+    
     if event.is_action_pressed("ui_left"):
-        input_stack.append("left" if !is_wearing_glasses else "right")
+        direction = "left" if !is_wearing_glasses else "right"
     if event.is_action_pressed("ui_right"):
-        input_stack.append("right" if !is_wearing_glasses else "left")
+        direction = "right" if !is_wearing_glasses else "left"
     if event.is_action_pressed("ui_up"):
-        input_stack.append("up" if !is_wearing_glasses else "down")
+        direction = "up" if !is_wearing_glasses else "down"
     if event.is_action_pressed("ui_down"):
-        input_stack.append("down" if !is_wearing_glasses else "up")
+        direction = "down" if !is_wearing_glasses else "up"
     
     if event.is_action_released("ui_left"):
-        input_stack.erase("left" if !is_wearing_glasses else "right")
+        direction = "left" if !is_wearing_glasses else "right"
+        pressed = false
     if event.is_action_released("ui_right"):
-        input_stack.erase("right" if !is_wearing_glasses else "left")
+        direction = "right" if !is_wearing_glasses else "left"
+        pressed = false
     if event.is_action_released("ui_up"):
-        input_stack.erase("up" if !is_wearing_glasses else "down")
+        direction = "up" if !is_wearing_glasses else "down"
+        pressed = false
     if event.is_action_released("ui_down"):
-        input_stack.erase("down" if !is_wearing_glasses else "up")
+        direction = "down" if !is_wearing_glasses else "up"
+        pressed = false
+    
+    if direction != "":
+        input_stack.erase(direction)
+        if pressed: input_stack.append(direction)    
         
-    #debug wesh
-    if event.is_action_pressed("ui_select"):
-        transition_to_movement_type(PlayerMovementType.Swim if movement_type == PlayerMovementType.Struggle else PlayerMovementType.Struggle)
+    ##debug wesh
+    #if event.is_action_pressed("ui_select"):
+        #transition_to_movement_type(PlayerMovementType.Swim if movement_type == PlayerMovementType.Struggle else PlayerMovementType.Struggle)
 
 func die():
     if !is_dead:
