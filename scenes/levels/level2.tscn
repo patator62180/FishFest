@@ -21,20 +21,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_rws21")
 
 [node name="BalloonObstacle" parent="." instance=ExtResource("2_8r304")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-targets = Array[Vector3]([Vector3(10, 0, 0), Vector3(-20, 0, 0)])
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -5)
+targets = Array[Vector3]([Vector3(20, 0, 0), Vector3(-40, 0, 0)])
 movement_speed = 0.2
 
 [node name="BalloonObstacle2" parent="." instance=ExtResource("2_8r304")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
-targets = Array[Vector3]([Vector3(15, 0, 0), Vector3(-30, 0, 0)])
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -15)
+targets = Array[Vector3]([Vector3(25, 0, 0), Vector3(-45, 0, 0)])
 movement_speed = 0.2
 
 [node name="Towel" parent="." instance=ExtResource("3_r1f20")]
-transform = Transform3D(1, 0, 0, 0, 0.999642, -0.0267603, 0, 0.0267603, 0.999642, -6, -0.252875, -12)
+transform = Transform3D(1, 0, 0, 0, 0.999642, -0.0267603, 0, 0.0267603, 0.999642, -4, -0.252875, -15)
 
 [node name="glasses - pickup" parent="." instance=ExtResource("4_w3hsm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.566678, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.566678, -15)
 
 [node name="Wall" parent="." instance=ExtResource("6_7wina")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20.9, -10, 0, -10)
@@ -47,6 +47,9 @@ transform = Transform3D(-4.37114e-08, 0, -20.9, 0, 1, 0, 1, 0, -9.13568e-07, 4.8
 
 [node name="beach" parent="." instance=ExtResource("5_2175m")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.5, -19.5)
+
+[node name="beach2" parent="." instance=ExtResource("5_2175m")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.5, 20.5)
 
 [connection signal="area_exited" from="LevelTransition" to="LevelTransition" method="_on_area_exited"]
 
