@@ -536,6 +536,7 @@ rotation_duration = 1.0
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 0, -12)
 targets = Array[Vector3]([Vector3(-10, 0, 0), Vector3(0, 0, 4), Vector3(10, 0, 0), Vector3(0, 0, -4)])
 movement_speed = 0.4
+is_shark = true
 
 [node name="Shark2" parent="ObstaclesMoving/SharkObstacle/SharkParent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -544,6 +545,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7, 0, -31.5)
 targets = Array[Vector3]([Vector3(-15, 0, 0), Vector3(15, 0, 0)])
 wait_duration = 0.4
+is_shark = true
 
 [node name="Shark2" parent="ObstaclesMoving/SharkObstacle2/SharkParent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -552,6 +554,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8, 0, -34.5)
 targets = Array[Vector3]([Vector3(15, 0, 0), Vector3(-15, 0, 0)])
 wait_duration = 0.4
+is_shark = true
 
 [node name="Shark2" parent="ObstaclesMoving/SharkObstacle3/SharkParent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

@@ -29,8 +29,8 @@ func _on_ui_start_pressed():
 viewport_path = NodePath("Cam POV")
 
 [sub_resource type="Environment" id="Environment_1jw8h"]
-tonemap_mode = 3
-tonemap_exposure = 11.06
+tonemap_mode = 1
+tonemap_exposure = 0.75
 
 [sub_resource type="BoxMesh" id="BoxMesh_0n036"]
 
