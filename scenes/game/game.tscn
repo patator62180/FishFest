@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=17 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="Script" path="res://scenes/game/UI.gd" id="1_3yld5"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
@@ -27,6 +27,10 @@ func _on_ui_start_pressed():
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
 viewport_path = NodePath("Cam POV")
+
+[sub_resource type="Environment" id="Environment_1jw8h"]
+tonemap_mode = 3
+tonemap_exposure = 11.06
 
 [sub_resource type="BoxMesh" id="BoxMesh_0n036"]
 
@@ -215,6 +219,7 @@ dummy_speed = 0.01
 [node name="Camera3D" parent="CameraParent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.5, 5)
 cull_mask = 1048571
+environment = SubResource("Environment_1jw8h")
 size = 11.252
 
 [node name="DummyLookAt" type="Node3D" parent="CameraParent"]
