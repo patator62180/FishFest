@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=18 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="Script" path="res://scenes/game/UI.gd" id="1_3yld5"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
+[ext_resource type="Theme" uid="uid://bsb0j7abng865" path="res://Assets/fish_theme.tres" id="2_m7d0e"]
 [ext_resource type="AudioStream" uid="uid://b8noc6yv7nigd" path="res://scenes/game/fish_splash.mp3" id="2_nadbn"]
 [ext_resource type="Script" path="res://scenes/camera/camera_parent.gd" id="2_q0fbw"]
 [ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
@@ -52,7 +53,7 @@ offset_right = -1152.0
 grow_horizontal = 0
 
 [node name="SpriteCamPOV" type="Sprite2D" parent="UI/Control"]
-position = Vector2(1048, 100)
+position = Vector2(1048, 96)
 scale = Vector2(0.363281, 0.363281)
 texture = SubResource("ViewportTexture_eg1oo")
 
@@ -64,6 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_m7d0e")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/StartUI"]
 layout_mode = 1
@@ -133,6 +135,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_m7d0e")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="UI/MiddleUI"]
 layout_mode = 1
@@ -163,6 +166,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_m7d0e")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="UI/EndUI"]
 layout_mode = 1
@@ -184,7 +188,7 @@ theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 80
 bbcode_enabled = true
 text = "[center][b]YOU DID IT ![/b][/center]
-[center]Thievery is always morraly responsible[/center]"
+[center]Thievery is always morally responsible[/center]"
 scroll_active = false
 
 [node name="Button" type="Button" parent="UI/EndUI"]
@@ -231,7 +235,7 @@ mesh = SubResource("BoxMesh_0n036")
 [node name="Cam POV" type="SubViewport" parent="."]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(707, 512)
+size = Vector2i(667, 512)
 render_target_clear_mode = 1
 
 [node name="Node3D" type="Node3D" parent="Cam POV" node_paths=PackedStringArray("target_position", "target_rotation")]
@@ -254,6 +258,9 @@ mesh = SubResource("PlaceholderMesh_u2nx8")
 
 [node name="MeshInstance3D" parent="Player/MeshInstance3D" index="0"]
 layers = 4
+
+[node name="Glasses" parent="Player/MeshInstance3D/MeshInstance3D/FishParent/Fish" index="7"]
+layers = 7
 
 [node name="Bones" parent="Player/MeshInstance3D" index="1"]
 transform = Transform3D(3.61999e-06, 1, 2.53518e-06, 1, -3.61999e-06, 0, 9.17733e-12, 2.53518e-06, -1, 0, 0, 0)
