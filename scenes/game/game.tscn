@@ -246,6 +246,7 @@ target_rotation = NodePath("../../Player/MeshInstance3D")
 [node name="Camera3D" type="Camera3D" parent="Cam POV/Node3D"]
 transform = Transform3D(-0.880748, 0.0910525, -0.46475, -0.00512255, 0.979455, 0.2016, 0.473558, 0.179939, -0.862186, -1.30987, 0.719937, -2.08054)
 cull_mask = 4
+current = true
 fov = 62.9
 
 [node name="Player" parent="." node_paths=PackedStringArray("user_interface") instance=ExtResource("1_siy02")]
@@ -261,9 +262,6 @@ layers = 4
 
 [node name="Glasses" parent="Player/MeshInstance3D/MeshInstance3D/FishParent/Fish" index="7"]
 layers = 7
-
-[node name="Bones" parent="Player/MeshInstance3D" index="1"]
-transform = Transform3D(3.61999e-06, 1, 2.53518e-06, 1, -3.61999e-06, 0, 9.17733e-12, 2.53518e-06, -1, 0, 0, 0)
 
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")

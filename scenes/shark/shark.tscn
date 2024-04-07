@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxxisfrbc7ktg"]
+[gd_scene load_steps=8 format=3 uid="uid://cxxisfrbc7ktg"]
 
 [ext_resource type="PackedScene" uid="uid://oli1g128ke3h" path="res://scenes/shark/Shark.glb" id="1_2j5u4"]
 [ext_resource type="Script" path="res://scenes/shark/shark.gd" id="2_d472j"]
+[ext_resource type="AudioStream" uid="uid://qeakd1nprskw" path="res://sound/shark_bite.wav" id="3_3iqk7"]
 
 [sub_resource type="Animation" id="Animation_ua78v"]
 resource_name = "RESET"
@@ -109,6 +110,46 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0, 0, 0)
 
+[sub_resource type="Animation" id="Animation_5s52c"]
+resource_name = "eating"
+step = 0.03
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.258819, 0, 0, 0.965926, 0.5, 1, 0, 0, 0, 1, 0.75, 1, 0.258819, 0, 0, 0.965926, 1, 1, -1.86265e-08, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.25, 1, 0, 0, -5, 0.75, 1, 0, 0, -5, 1, 1, 0, 0, 0)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/neck/mouth_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 9.31219e-09, -3.81858e-10, -1.16415e-09, 1, 0.25, 1, 0.382666, -0.00367551, -7.56042e-10, 0.92388, 0.39, 1, 0, 0, 0, 1, 0.75, 1, 0.382666, -0.00367551, -7.56042e-10, 0.92388, 1, 1, 9.31219e-09, -3.81858e-10, -1.16415e-09, 1)
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Shark Bite")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_3iqk7")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+
 [sub_resource type="Animation" id="Animation_ije8t"]
 resource_name = "moving"
 length = 1.5
@@ -210,30 +251,6 @@ tracks/7/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.173503), Vector3(0, 0, -0.127732)]
 }
 
-[sub_resource type="Animation" id="Animation_5s52c"]
-resource_name = "eating"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("body")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.258819, 0, 0, 0.965926, 0.5, 1, 0, 0, 0, 1, 0.75, 1, 0.258819, 0, 0, 0.965926, 1, 1, -1.86265e-08, 0, 0, 1)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("body")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.25, 1, 0, 0, -5, 0.75, 1, 0, 0, -5, 1, 1, 0, 0, 0)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("body/neck/mouth_bottom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 9.31219e-09, -3.81858e-10, -1.16415e-09, 1, 0.25, 1, 0.382666, -0.00367551, -7.56042e-10, 0.92388, 0.75, 1, 0.382666, -0.00367551, -7.56042e-10, 0.92388, 1, 1, 9.31219e-09, -3.81858e-10, -1.16415e-09, 1)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nfvj4"]
 _data = {
 "RESET": SubResource("Animation_ua78v"),
@@ -244,9 +261,6 @@ _data = {
 [node name="Shark2" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_2j5u4")]
 script = ExtResource("2_d472j")
 animation_player = NodePath("Shark/AnimationPlayer")
-
-[node name="body" parent="Shark" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="left_fin" parent="Shark/body" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2.5, -1.5)
@@ -271,3 +285,5 @@ libraries = {
 "": SubResource("AnimationLibrary_nfvj4")
 }
 autoplay = "moving"
+
+[node name="Shark Bite" type="AudioStreamPlayer" parent="Shark/AnimationPlayer" index="0"]
