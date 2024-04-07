@@ -15,7 +15,6 @@ var current_move_time: float
 
 @export var rotation_time: float
 
-
 @onready var fish_parent: Node3D = $MeshInstance3D/MeshInstance3D/FishParent
 @onready var bones: Node3D = $MeshInstance3D/Bones
 @onready var raycast_wall: RayCast3D = $WallDetection
@@ -47,7 +46,7 @@ func _ready():
     
     fish.set_moving(false)
     instance = self
-    is_dead = false
+    is_dead = true
     is_wearing_glasses = false
     
     movement_type = PlayerMovementType.Swim

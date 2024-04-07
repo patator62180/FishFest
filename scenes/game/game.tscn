@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=15 format=3 uid="uid://cpywa3bj60gk2"]
 
+[ext_resource type="Script" path="res://scenes/game/UI.gd" id="1_3yld5"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
@@ -48,6 +49,7 @@ viewport_path = NodePath("Cam POV")
 script = SubResource("GDScript_j6dg8")
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("1_3yld5")
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -63,6 +65,74 @@ position = Vector2(1048, 100)
 scale = Vector2(0.363281, 0.363281)
 texture = SubResource("ViewportTexture_eg1oo")
 
+[node name="StartUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/StartUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 75.0
+offset_right = 200.0
+offset_bottom = 275.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 0.454902, 0.0470588, 1)
+theme_override_colors/font_shadow_color = Color(0.407843, 0.137255, 0, 1)
+theme_override_colors/font_outline_color = Color(0.717647, 0.207843, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 20
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]FISH GAME NAME[/center]"
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UI/StartUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -116.0
+offset_right = 450.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(1, 0.454902, 0.0470588, 1)
+theme_override_colors/font_outline_color = Color(0.407843, 0.137255, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[center][b]USE ARROW KEYS TO MOVE[/b][/center]
+[center]Get what's yours then come back home ![/center]"
+scroll_active = false
+
+[node name="Button" type="Button" parent="UI/StartUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -248.0
+offset_right = 150.0
+offset_bottom = -147.999
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
 [node name="CameraParent" parent="." node_paths=PackedStringArray("camera", "player", "dummy_look_at") instance=ExtResource("1_055aq")]
 script = ExtResource("2_q0fbw")
 camera = NodePath("Camera3D")
@@ -74,7 +144,7 @@ dummy_speed = 0.01
 
 [node name="Camera3D" parent="CameraParent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.5, 5)
-cull_mask = 1048573
+cull_mask = 1048571
 size = 11.252
 
 [node name="DummyLookAt" type="Node3D" parent="CameraParent"]
@@ -85,6 +155,7 @@ mesh = SubResource("BoxMesh_0n036")
 
 [node name="Cam POV" type="SubViewport" parent="."]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(707, 512)
 render_target_clear_mode = 1
 
@@ -95,14 +166,21 @@ target_rotation = NodePath("../../Player/MeshInstance3D")
 
 [node name="Camera3D" type="Camera3D" parent="Cam POV/Node3D"]
 transform = Transform3D(-0.880748, 0.0910525, -0.46475, -0.00512255, 0.979455, 0.2016, 0.473558, 0.179939, -0.862186, -1.30987, 0.719937, -2.08054)
-cull_mask = 2
+cull_mask = 4
 fov = 62.9
 
 [node name="Player" parent="." instance=ExtResource("1_siy02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
 
 [node name="MeshInstance3D" parent="Player" index="0"]
+layers = 4
 mesh = SubResource("PlaceholderMesh_u2nx8")
+
+[node name="MeshInstance3D" parent="Player/MeshInstance3D" index="0"]
+layers = 4
+
+[node name="DorsalFin" parent="Player/MeshInstance3D/MeshInstance3D/FishParent/Fish" index="1"]
+transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0, 0.5, 0)
 
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")
@@ -120,16 +198,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.155,
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.399519, -0.433013, -0.808013, 0.808013, -0.25, 0.533494, -0.433013, -0.866025, 0.25, 0, 0, 0)
-layers = 3
+layers = 0
 light_color = Color(1, 0.945098, 0.819608, 1)
 light_energy = 0.4
+light_cull_mask = 4294967291
 shadow_enabled = true
 shadow_opacity = 0.9
+sky_mode = 1
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.75, 0.5, 0.433013, 0.5, -5.47527e-08, 0.866025, 0.433013, 0.866025, -0.25, 0, 0, 0)
-layers = 3
+layers = 0
 light_energy = 0.2
+light_cull_mask = 4294967291
 shadow_opacity = 0.55
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
@@ -137,5 +218,8 @@ stream = ExtResource("10_fcahe")
 volume_db = -6.892
 autoplay = true
 
+[connection signal="pressed" from="UI/StartUI/Button" to="UI" method="_on_start_pressed"]
+
 [editable path="CameraParent"]
 [editable path="Player"]
+[editable path="Player/MeshInstance3D/MeshInstance3D/FishParent/Fish"]

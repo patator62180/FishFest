@@ -381,31 +381,24 @@ is_moving_transition_speed = 10.0
 is_grounded_transition_speed = 10.0
 
 [node name="Body" parent="." index="0"]
-layers = 3
+layers = 5
 cast_shadow = 2
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Body" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473261, 5.98857)
-layers = 2
-light_cull_mask = 4294967294
-spot_attenuation = 0.00704102
-spot_angle_attenuation = 0.00866852
 
 [node name="DorsalFin" parent="." index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0, 0.5, 0)
-layers = 3
+layers = 5
 
 [node name="LeftFin" parent="." index="2"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.5, -0.3, -0.3)
-layers = 3
+layers = 5
 
 [node name="RightFin" parent="." index="3"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.5, -0.3, -0.3)
-layers = 3
+layers = 5
 
 [node name="BackFin" parent="." index="4"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 5.96046e-08, 3.55271e-15, -0.7)
-layers = 3
+layers = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
@@ -424,4 +417,8 @@ parameters/is_moving/blend_amount = 0.0
 parameters/struggle_height/blend_amount = 0.5
 
 [node name="Glasses" parent="." index="7"]
-layers = 3
+layers = 5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 0.985288, -0.170905, 0, 0.170905, 0.985288, 0, -0.618026, 3.81903)
+layers = 4
