@@ -10,6 +10,7 @@ enum PlayerMovementType { Swim, Struggle }
 @export var move_time_struggle: float
 @export var move_distance: float
 @export var move_distance_struggle: float
+@export var user_interface: UI
 
 var current_move_time: float
 
@@ -173,13 +174,17 @@ func die():
 
 func win():
     if is_wearing_glasses:
-        die()
+        is_dead = true
+        user_interface.win()
+        fish.set_moving(false) 
         
 func put_on_glasses():
     fish.put_on_glasses()
     is_wearing_glasses = true
     
     input_stack.clear()
+    
+    user_interface.reach_mid_point()
 
 func get_reeled(reel: Node3D):
     if !is_dead:
