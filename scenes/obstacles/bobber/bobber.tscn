@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp84niogpdwwn"]
+
+[ext_resource type="Script" path="res://scenes/levels/bobber.gd" id="1_mrc54"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xys0d"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o8p6h"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_icapw"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7djhp"]
+
+[sub_resource type="Animation" id="Animation_yvck3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_axs7v"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_odx27"]
+resource_name = "reel_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.2, -0.0845784, 10, -0.4, 0.0679598, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 10, -0.2, -10.4538, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ophem"]
+_data = {
+"RESET": SubResource("Animation_yvck3"),
+"float": SubResource("Animation_axs7v"),
+"reel_in": SubResource("Animation_odx27")
+}
+
+[node name="Bobber" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+script = ExtResource("1_mrc54")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xys0d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_o8p6h")
+skeleton = NodePath("../..")
+
+[node name="Node3D" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0.65, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
+mesh = SubResource("CylinderMesh_icapw")
+skeleton = NodePath("../../..")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_7djhp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ophem")
+}
+autoplay = "float"
+
+[connection signal="area_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_area_entered"]
