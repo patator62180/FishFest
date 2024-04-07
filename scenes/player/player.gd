@@ -18,7 +18,8 @@ var current_move_time: float
 
 @onready var fish_parent: Node3D = $MeshInstance3D/MeshInstance3D/FishParent
 @onready var bones: Node3D = $MeshInstance3D/Bones
-@onready var raycast: RayCast3D = $RayCast3D
+@onready var raycast_wall: RayCast3D = $WallDetection
+@onready var raycast_ground: RayCast3D = $GroundDetection
 @onready var rotate_parent: Node3D = $MeshInstance3D
 
 var input_stack: Array
@@ -58,6 +59,9 @@ func _process(delta):
         return
         
     move(delta)
+    
+    if raycast_ground.is_colliding():
+        print("is colliding")
         
 func move(delta):
     start_moving()
@@ -92,10 +96,10 @@ func start_moving():
             input_stack.clear()     
                 
         
-        raycast.rotation.y = rotation_target
-        raycast.force_raycast_update()
+        raycast_wall.rotation.y = rotation_target
+        raycast_wall.force_raycast_update()
         
-        if raycast.is_colliding():
+        if raycast_wall.is_colliding():
             move_timer = current_move_time
             fish.set_moving(false)
         else:
@@ -166,6 +170,18 @@ func put_on_glasses():
     is_wearing_glasses = true
     
     input_stack.clear()
+
+func get_reeled(reel: Node3D):
+    if !is_dead:
+        is_dead = true
+        
+        reparent(reel)
+        
+        GameCamera.instance.game_over()
+        
+        await get_tree().create_timer(3).timeout
+
+        get_tree().reload_current_scene()
         
 func transition_to_movement_type(type: PlayerMovementType):
     if movement_type == type:
@@ -175,4 +191,4 @@ func transition_to_movement_type(type: PlayerMovementType):
     
     movement_type = type
     fish.set_grounded(movement_type == PlayerMovementType.Struggle)
-    raycast.target_position.z = - move_distance if movement_type == PlayerMovementType.Swim else - move_distance_struggle
+    raycast_wall.target_position.z = - move_distance if movement_type == PlayerMovementType.Swim else - move_distance_struggle
