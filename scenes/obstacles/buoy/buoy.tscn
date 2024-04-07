@@ -1,12 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://hnbts4x462jv"]
+[gd_scene load_steps=5 format=3 uid="uid://hnbts4x462jv"]
 
 [ext_resource type="PackedScene" uid="uid://c0fmjk5gt4eud" path="res://blender/buoy/buoy.glb" id="1_b6wg2"]
 [ext_resource type="PackedScene" uid="uid://blnlkyhonxqcy" path="res://scenes/levels/wall/wall.tscn" id="2_qc6j0"]
+
+[sub_resource type="Animation" id="Animation_5pskb"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.75, 1, 0, 0, -0.043619, 0.999048, 2.25, 1, 0, 0, 0.043619, 0.999048)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbh5d"]
+_data = {
+"Idle": SubResource("Animation_5pskb")
+}
 
 [node name="Buoy" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Model" parent="." instance=ExtResource("1_b6wg2")]
+transform = Transform3D(0.9973, -0.0734322, 0, 0.0734322, 0.9973, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Wall" parent="." instance=ExtResource("2_qc6j0")]
 transform = Transform3D(2.1702, 0, 0, 0, 1, 0, 0, 0, 2.1702, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rbh5d")
+}
+autoplay = "Idle"
