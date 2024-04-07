@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl2vajlt2r5da"]
+[gd_scene load_steps=8 format=3 uid="uid://dl2vajlt2r5da"]
 
 [ext_resource type="PackedScene" uid="uid://eyoee6trxtrn" path="res://scenes/levels/level_transition/level_transition.tscn" id="1_p0h2p"]
 [ext_resource type="PackedScene" uid="uid://ctevnjd1xdl4p" path="res://scenes/obstacles/baloon/balloon_obstacle.tscn" id="2_8r304"]
 [ext_resource type="PackedScene" uid="uid://dw4h4vxlopcd0" path="res://scenes/towel/towel01.tscn" id="3_r1f20"]
 [ext_resource type="PackedScene" uid="uid://byp7vvsei1jru" path="res://scenes/glasses/glasses_pickup.tscn" id="4_w3hsm"]
-[ext_resource type="PackedScene" uid="uid://b0a1n5dsc676b" path="res://blender/beach/beach.glb" id="5_2175m"]
+[ext_resource type="PackedScene" uid="uid://76celximhnq5" path="res://blender/beach/beach.glb" id="5_2175m"]
+[ext_resource type="PackedScene" uid="uid://blnlkyhonxqcy" path="res://scenes/levels/wall/wall.tscn" id="6_7wina"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rws21"]
 size = Vector3(20, 1, 1)
@@ -35,8 +36,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.180446, -12)
 [node name="glasses - pickup" parent="." instance=ExtResource("4_w3hsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -12)
 
+[node name="Wall" parent="." instance=ExtResource("6_7wina")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20.9, -10, 0, -10)
+
+[node name="Wall2" parent="." instance=ExtResource("6_7wina")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20.9, 10, 0, -10)
+
+[node name="Wall3" parent="." instance=ExtResource("6_7wina")]
+transform = Transform3D(-4.37114e-08, 0, -20.9, 0, 1, 0, 1, 0, -9.13568e-07, 4.80825e-07, 0, -21)
+
 [node name="beach" parent="." instance=ExtResource("5_2175m")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -9.87672)
+transform = Transform3D(10, 0, 0, 0, 9.99962, -0.0872654, 0, 0.0872654, 9.99962, 0, 0, -19.4587)
 
 [connection signal="area_exited" from="LevelTransition" to="LevelTransition" method="_on_area_exited"]
 
