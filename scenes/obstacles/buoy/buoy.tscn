@@ -24,7 +24,7 @@ _data = {
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Model" parent="." instance=ExtResource("1_b6wg2")]
-transform = Transform3D(0.9973, -0.0734322, 0, 0.0734322, 0.9973, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.998082, 0.0618987, 0, -0.0618987, 0.998082, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Wall" parent="." instance=ExtResource("2_qc6j0")]
 transform = Transform3D(2.1702, 0, 0, 0, 1, 0, 0, 0, 2.1702, 0, 0, 0)
