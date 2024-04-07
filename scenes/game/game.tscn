@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=16 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="Script" path="res://scenes/game/UI.gd" id="1_3yld5"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
 [ext_resource type="PackedScene" uid="uid://db8vs710eb7mq" path="res://scenes/levels/level1.tscn" id="2_fu777"]
+[ext_resource type="AudioStream" uid="uid://b8noc6yv7nigd" path="res://scenes/game/fish_splash.mp3" id="2_nadbn"]
 [ext_resource type="Script" path="res://scenes/camera/camera_parent.gd" id="2_q0fbw"]
 [ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
 [ext_resource type="PackedScene" uid="uid://dl2vajlt2r5da" path="res://scenes/levels/level2.tscn" id="6_47kk3"]
@@ -14,28 +15,14 @@
 [sub_resource type="GDScript" id="GDScript_j6dg8"]
 script/source = "extends Node3D
 
-#@onready var player: Player = get_tree().get_first_node_in_group(\"Player\")
-#@onready var camera_parent: Node3D = $CameraParent
-#
-#func _ready():
-    #var glasses: Glasses = get_tree().get_first_node_in_group(\"Glasses\")
-    #var end_goal: EndGoal = get_tree().get_first_node_in_group(\"EndGoal\")
-       #
-    #if glasses != null:
-        #glasses.glasses_picked_up.connect(on_glasses_picked_up)
-        #
-    #if end_goal != null:
-        #end_goal.level_won.connect(on_level_won)
-        #
-#func on_glasses_picked_up(glasses: Glasses):
-    #glasses.queue_free()
-    #if player != null:
-        #player.put_on_glasses()
-    #camera_parent.turn_camera()
-#
-#func on_level_won(end_goal: EndGoal):
-     #if (player.glasses_on != 1):
-        #print(\"gagne\")
+@onready var ui: UI = $UI
+@onready var game_music: AudioStreamPlayer = $GameMusic
+
+func _ready():
+    ui.start_pressed.connect(_on_ui_start_pressed)
+
+func _on_ui_start_pressed():
+    game_music.play()
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
@@ -212,6 +199,10 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "PLAY AGAIN"
 
+[node name="SplashMusic" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("2_nadbn")
+volume_db = -3.133
+
 [node name="CameraParent" parent="." node_paths=PackedStringArray("camera", "player", "dummy_look_at") instance=ExtResource("1_055aq")]
 script = ExtResource("2_q0fbw")
 camera = NodePath("Camera3D")
@@ -259,6 +250,9 @@ mesh = SubResource("PlaceholderMesh_u2nx8")
 [node name="MeshInstance3D" parent="Player/MeshInstance3D" index="0"]
 layers = 4
 
+[node name="Bones" parent="Player/MeshInstance3D" index="1"]
+transform = Transform3D(3.61999e-06, 1, 2.53518e-06, 1, -3.61999e-06, 0, 9.17733e-12, 2.53518e-06, -1, 0, 0, 0)
+
 [node name="ObstacleWarningFactory" type="Node" parent="."]
 script = ExtResource("8_ulr11")
 
@@ -293,7 +287,6 @@ shadow_opacity = 0.55
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_fcahe")
 volume_db = -6.892
-autoplay = true
 
 [connection signal="pressed" from="UI/StartUI/Button" to="UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UI/EndUI/Button" to="UI" method="_on_play_again_pressed"]
