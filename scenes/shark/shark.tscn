@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxxisfrbc7ktg"]
+[gd_scene load_steps=7 format=3 uid="uid://cxxisfrbc7ktg"]
 
 [ext_resource type="PackedScene" uid="uid://oli1g128ke3h" path="res://scenes/shark/Shark.glb" id="1_2j5u4"]
+[ext_resource type="Script" path="res://scenes/shark/shark.gd" id="2_d472j"]
 
 [sub_resource type="Animation" id="Animation_ua78v"]
 resource_name = "RESET"
@@ -240,7 +241,9 @@ _data = {
 "moving": SubResource("Animation_ije8t")
 }
 
-[node name="Shark2" instance=ExtResource("1_2j5u4")]
+[node name="Shark2" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_2j5u4")]
+script = ExtResource("2_d472j")
+animation_player = NodePath("Shark/AnimationPlayer")
 
 [node name="body" parent="Shark" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

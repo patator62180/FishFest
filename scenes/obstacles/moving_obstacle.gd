@@ -14,7 +14,7 @@ class_name MovingObstacle
 
 @export var warning_width: float
 
-@export var is_shark: bool
+@export var _shark: shark
 
 enum MovementType { BackAndForth, OneWay, OnceAndGone }
 
@@ -141,9 +141,8 @@ func _on_area_3d_area_entered(area):
         
     if area.name == "Player":
         Player.instance.die()
-        if is_shark:
-            $SharkParent/Shark2/Shark/AnimationPlayer.play("eating")
-            $SharkParent/Shark2/Shark/AnimationPlayer.queue("moving")
+        if _shark:
+            _shark.eat()
         
 func generate_warning_one_way():
     ObstacleWarningFactory.instance.generate_warning(target_start, rotation, movement_duration / movement_speed, wait_duration, warning_width)

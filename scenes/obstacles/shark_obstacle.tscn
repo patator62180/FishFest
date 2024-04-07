@@ -6,13 +6,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_hkepb"]
 size = Vector3(0.766857, 0.8428, 2.48752)
 
-[node name="SharkObstacle" type="Node3D"]
+[node name="SharkObstacle" type="Node3D" node_paths=PackedStringArray("_shark")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_vfxhy")
 targets = Array[Vector3]([Vector3(-20, 0, 0), Vector3(0, 0, 4), Vector3(20, 0, 0), Vector3(0, 0, -4)])
 movement_speed = 0.5
 rotation_duration = 0.4
 kill_switch = true
+_shark = NodePath("SharkParent/Shark2")
 
 [node name="SharkParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01, 0.67228)
