@@ -384,6 +384,13 @@ is_grounded_transition_speed = 10.0
 layers = 3
 cast_shadow = 2
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473261, 5.98857)
+layers = 2
+light_cull_mask = 4294967294
+spot_attenuation = 0.00704102
+spot_angle_attenuation = 0.00866852
+
 [node name="DorsalFin" parent="." index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0, 0.5, 0)
 layers = 3
