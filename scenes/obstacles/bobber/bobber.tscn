@@ -1,10 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp84niogpdwwn"]
+[gd_scene load_steps=12 format=3 uid="uid://bp84niogpdwwn"]
 
 [ext_resource type="Script" path="res://scenes/levels/bobber.gd" id="1_mrc54"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu0ys"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_xys0d"]
+material = SubResource("StandardMaterial3D_vu0ys")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsc48"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o8p6h"]
+material = SubResource("StandardMaterial3D_vsc48")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 0.5
