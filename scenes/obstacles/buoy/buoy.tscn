@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://hnbts4x462jv"]
+
+[ext_resource type="PackedScene" uid="uid://c0fmjk5gt4eud" path="res://blender/buoy/buoy.glb" id="1_b6wg2"]
+[ext_resource type="PackedScene" uid="uid://blnlkyhonxqcy" path="res://scenes/levels/wall/wall.tscn" id="2_qc6j0"]
+
+[node name="Buoy" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Model" parent="." instance=ExtResource("1_b6wg2")]
+
+[node name="Wall" parent="." instance=ExtResource("2_qc6j0")]
+transform = Transform3D(2.1702, 0, 0, 0, 1, 0, 0, 0, 2.1702, 0, 0, 0)

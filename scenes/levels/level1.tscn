@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://db8vs710eb7mq"]
+[gd_scene load_steps=12 format=3 uid="uid://db8vs710eb7mq"]
 
 [ext_resource type="PackedScene" uid="uid://chksqebqkb0bi" path="res://scenes/water/water_wind_waker.tscn" id="1_5n7ux"]
 [ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="2_y1vtf"]
 [ext_resource type="PackedScene" uid="uid://cqsivhg1nmyks" path="res://scenes/obstacles/boat_obstacle.tscn" id="3_4imwq"]
 [ext_resource type="PackedScene" uid="uid://bp84niogpdwwn" path="res://scenes/obstacles/bobber/bobber.tscn" id="4_3dhfl"]
+[ext_resource type="PackedScene" uid="uid://hnbts4x462jv" path="res://scenes/obstacles/buoy/buoy.tscn" id="4_3554m"]
 [ext_resource type="PackedScene" uid="uid://eyoee6trxtrn" path="res://scenes/levels/level_transition/level_transition.tscn" id="4_efygn"]
 [ext_resource type="PackedScene" uid="uid://blnlkyhonxqcy" path="res://scenes/levels/wall/wall.tscn" id="5_3i8as"]
 [ext_resource type="PackedScene" uid="uid://dtviv0aa1x2t" path="res://scenes/boat/boat.tscn" id="5_dmyd8"]
@@ -17,102 +18,6 @@ size = Vector3(20, 0.5, 3)
 [sub_resource type="CylinderMesh" id="CylinderMesh_i8d3v"]
 top_radius = 0.25
 bottom_radius = 0.25
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_qeft3"]
-top_radius = 1.0
-bottom_radius = 1.0
-height = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_bi80q"]
-size = Vector3(0.2, 2, 0.2)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_wuksu"]
-height = 0.3
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_c4dt0"]
-radius = 0.2
-height = 0.5
-
-[sub_resource type="Animation" id="Animation_7ss2q"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_td68s"]
-resource_name = "float"
-length = 6.0
-loop_mode = 1
-step = 1.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5, 3, 4.5, 6)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 6)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 6)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gg2cg"]
-_data = {
-"RESET": SubResource("Animation_7ss2q"),
-"float": SubResource("Animation_td68s")
-}
 
 [node name="Level1" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -387,77 +292,11 @@ mesh = SubResource("CylinderMesh_i8d3v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
 mesh = SubResource("CylinderMesh_i8d3v")
 
-[node name="Buoy" type="Node3D" parent="Obstacles"]
-transform = Transform3D(1.5, 0, -4.08857e-10, 0, 1.5, 0, 4.08857e-10, 0, 1.5, -2.18557e-07, 0, 7.99549)
+[node name="Buoy3" parent="Obstacles" instance=ExtResource("4_3554m")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.84217e-14, 0, 7.99877)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Buoy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("CylinderMesh_qeft3")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles/Buoy"]
-transform = Transform3D(0.664463, 0.241845, 0.707107, -0.34202, 0.939693, 0, -0.664463, -0.241845, 0.707107, -0.305686, 0.897394, 0.305686)
-mesh = SubResource("BoxMesh_bi80q")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles/Buoy"]
-transform = Transform3D(0.24321, 0.0885213, -0.965926, -0.34202, 0.939693, 0, 0.907673, 0.330366, 0.258819, -0.111889, 0.897394, -0.417575)
-mesh = SubResource("BoxMesh_bi80q")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles/Buoy"]
-transform = Transform3D(-0.907673, -0.330366, 0.258819, -0.34202, 0.939693, 0, -0.24321, -0.0885213, -0.965926, 0.417576, 0.897394, 0.111889)
-mesh = SubResource("BoxMesh_bi80q")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles/Buoy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
-mesh = SubResource("CylinderMesh_wuksu")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles/Buoy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
-mesh = SubResource("CapsuleMesh_c4dt0")
-
-[node name="Wall" parent="Obstacles/Buoy" instance=ExtResource("5_3i8as")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Buoy"]
-libraries = {
-"": SubResource("AnimationLibrary_gg2cg")
-}
-autoplay = "float"
-
-[node name="Buoy2" type="Node3D" parent="Obstacles"]
-transform = Transform3D(1.5, 0, -4.08861e-10, 0, 1.5, 0, 4.08861e-10, 0, 1.5, 4.5, 0, -14.5045)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Buoy2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("CylinderMesh_qeft3")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles/Buoy2"]
-transform = Transform3D(0.664463, 0.241845, 0.707107, -0.34202, 0.939693, 0, -0.664463, -0.241845, 0.707107, -0.305686, 0.897394, 0.305686)
-mesh = SubResource("BoxMesh_bi80q")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles/Buoy2"]
-transform = Transform3D(0.24321, 0.0885213, -0.965926, -0.34202, 0.939693, 0, 0.907673, 0.330366, 0.258819, -0.111889, 0.897394, -0.417575)
-mesh = SubResource("BoxMesh_bi80q")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles/Buoy2"]
-transform = Transform3D(-0.907673, -0.330366, 0.258819, -0.34202, 0.939693, 0, -0.24321, -0.0885213, -0.965926, 0.417576, 0.897394, 0.111889)
-mesh = SubResource("BoxMesh_bi80q")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles/Buoy2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
-mesh = SubResource("CylinderMesh_wuksu")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles/Buoy2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
-mesh = SubResource("CapsuleMesh_c4dt0")
-
-[node name="Wall" parent="Obstacles/Buoy2" instance=ExtResource("5_3i8as")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Buoy2"]
-libraries = {
-"": SubResource("AnimationLibrary_gg2cg")
-}
-autoplay = "float"
+[node name="Buoy4" parent="Obstacles" instance=ExtResource("4_3554m")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.5, 0, -14.527)
 
 [node name="Bobber" parent="Obstacles" instance=ExtResource("4_3dhfl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
@@ -469,7 +308,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0,
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 6.5, 1, -52.5)
 
 [node name="Boat" parent="Obstacles/StaticBoat" instance=ExtResource("5_dmyd8")]
-transform = Transform3D(1, 0, 0, 0, 0.995913, -0.0903197, 0, 0.0903197, 0.995913, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.995913, -0.0903198, 0, 0.0903198, 0.995913, 0, 0, 0)
 
 [node name="Boat" parent="Obstacles/StaticBoat/Boat" index="0"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0.12, 0.108, -7.45058e-09)
@@ -487,7 +326,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0)
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -12.5, 1, -21.5)
 
 [node name="Boat" parent="Obstacles/StaticBoat2" instance=ExtResource("5_dmyd8")]
-transform = Transform3D(1, 0, 0, 0, 0.995913, -0.0903197, 0, 0.0903197, 0.995913, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.995913, -0.0903198, 0, 0.0903198, 0.995913, 0, 0, 0)
 
 [node name="Boat" parent="Obstacles/StaticBoat2/Boat" index="0"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0.12, 0.108, -7.45058e-09)
@@ -563,8 +402,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [editable path="Obstacles/Pier2/Wall"]
 [editable path="Obstacles/Pier3/Wall"]
 [editable path="Obstacles/Pier4/Wall"]
-[editable path="Obstacles/Buoy/Wall"]
-[editable path="Obstacles/Buoy2/Wall"]
 [editable path="Obstacles/StaticBoat/Boat"]
 [editable path="Obstacles/StaticBoat2/Boat"]
 [editable path="Obstacles/StaticBoat2/Wall"]
