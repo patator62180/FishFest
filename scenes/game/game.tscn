@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=15 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
 [ext_resource type="PackedScene" uid="uid://w5mymv1kldc1" path="res://scenes/player/player.tscn" id="1_siy02"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dl2vajlt2r5da" path="res://scenes/levels/level2.tscn" id="6_47kk3"]
 [ext_resource type="PackedScene" uid="uid://byp7vvsei1jru" path="res://scenes/glasses/glasses_pickup.tscn" id="6_xxfpe"]
 [ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
+[ext_resource type="AudioStream" uid="uid://m1vya6ajuek5" path="res://scenes/game/fish.mp3" id="10_fcahe"]
 [ext_resource type="PackedScene" uid="uid://byp2hs35587k1" path="res://scenes/end_goal/end_goal.tscn" id="10_gc51s"]
 
 [sub_resource type="GDScript" id="GDScript_j6dg8"]
@@ -137,6 +138,11 @@ transform = Transform3D(-0.75, 0.5, 0.433013, 0.5, -5.47527e-08, 0.866025, 0.433
 layers = 3
 light_energy = 0.2
 shadow_opacity = 0.55
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fcahe")
+volume_db = -6.892
+autoplay = true
 
 [editable path="CameraParent"]
 [editable path="Player"]
