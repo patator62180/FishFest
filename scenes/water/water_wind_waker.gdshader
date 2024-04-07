@@ -14,6 +14,8 @@ uniform vec2 foam_offset = vec2(0.1,0.1);
 uniform float wave_height = 0.1;
 uniform float wave_frequency = 10.0;
 
+uniform float pixel_scale;
+
 void vertex(){
     vec4 global_vertex = MODEL_MATRIX * vec4(VERTEX,1.0);
     float wave = sin(wave_frequency * global_vertex.z + global_vertex.x + TIME) * wave_height;
@@ -22,12 +24,14 @@ void vertex(){
 }
 
 void fragment() {
-    vec2 flow_uv = (flow_speed / size) * TIME + UV;    
+    vec2 pixel_uv = floor(UV*pixel_scale)/pixel_scale;
+    
+    vec2 flow_uv = (flow_speed / size) * TIME + pixel_uv;    
     
 	vec4 flow_value = texture(flow_texture, flow_uv);
     flow_value = flow_value * flow_strength;
     
-    vec2 foam_uv = (flow_value.xy + UV) * size;
+    vec2 foam_uv = (flow_value.xy + pixel_uv) * size;
     vec4 foam_dark = texture(foam_texture, foam_uv);
     foam_dark = mix(water_color, foam_color_dark, foam_dark);
     vec4 foam_light = texture(foam_texture, foam_uv + foam_offset);    
