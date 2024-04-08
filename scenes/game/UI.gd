@@ -6,6 +6,7 @@ class_name UI
 @onready var middle_UI: Control = $MiddleUI
 @onready var end_UI: Control = $EndUI
 @onready var splash_music: AudioStreamPlayer = $SplashMusic
+@onready var timer: Panel = $Timer/Panel
 
 signal start_pressed
 
@@ -13,11 +14,13 @@ func _ready():
     start_UI.visible = true
     middle_UI.visible = false
     end_UI.visible = false
+    timer.visible = false
     splash_music.play()
 
 func _on_start_pressed():
     start_UI.visible = false
     Player.instance.is_dead = false
+    timer.visible = true    
     splash_music.stop()
     start_pressed.emit()
 
@@ -30,6 +33,7 @@ func reach_mid_point():
     middle_UI.visible = false
 
 func win():
+    timer.stop()
     end_UI.visible = true
 
 func _on_play_again_pressed():
