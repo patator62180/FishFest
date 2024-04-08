@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=24 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="Script" path="res://scenes/game/UI.gd" id="1_3yld5"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
@@ -35,6 +35,18 @@ func _on_texture_button_toggled(toggled_on):
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
 viewport_path = NodePath("Cam POV")
+
+[sub_resource type="InputEventKey" id="InputEventKey_x31qo"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_s2ll7"]
+device = -1
+keycode = 4194320
+
+[sub_resource type="Shortcut" id="Shortcut_uuw0p"]
+events = [SubResource("InputEventKey_x31qo"), SubResource("InputEventKey_s2ll7")]
 
 [sub_resource type="Environment" id="Environment_1jw8h"]
 tonemap_mode = 1
@@ -135,6 +147,7 @@ offset_bottom = -147.999
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_uuw0p")
 text = "PLAY"
 
 [node name="MiddleUI" type="Control" parent="UI"]

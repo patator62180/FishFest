@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp84niogpdwwn"]
+[gd_scene load_steps=13 format=3 uid="uid://bp84niogpdwwn"]
 
 [ext_resource type="Script" path="res://scenes/levels/bobber.gd" id="1_mrc54"]
 
@@ -16,7 +16,11 @@ top_radius = 0.2
 bottom_radius = 0.2
 height = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yqf1"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_icapw"]
+material = SubResource("StandardMaterial3D_7yqf1")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 10.0
