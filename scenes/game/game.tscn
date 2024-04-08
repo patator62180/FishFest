@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpywa3bj60gk2"]
+[gd_scene load_steps=20 format=3 uid="uid://cpywa3bj60gk2"]
 
 [ext_resource type="Script" path="res://scenes/game/UI.gd" id="1_3yld5"]
 [ext_resource type="PackedScene" uid="uid://cj3s5sudjjbdv" path="res://scenes/camera/camera_parent.tscn" id="1_055aq"]
@@ -7,7 +7,9 @@
 [ext_resource type="Theme" uid="uid://bsb0j7abng865" path="res://Assets/fish_theme.tres" id="2_m7d0e"]
 [ext_resource type="AudioStream" uid="uid://b8noc6yv7nigd" path="res://scenes/game/fish_splash.mp3" id="2_nadbn"]
 [ext_resource type="Script" path="res://scenes/camera/camera_parent.gd" id="2_q0fbw"]
+[ext_resource type="Texture2D" uid="uid://dg6edxo3vdfd8" path="res://Assets/sound_mute.png" id="2_ueoag"]
 [ext_resource type="Script" path="res://scenes/game/POVcam.gd" id="3_llk6a"]
+[ext_resource type="Texture2D" uid="uid://b3ibp2fcsdfqv" path="res://Assets/sound_unmute.png" id="3_wqf2m"]
 [ext_resource type="PackedScene" uid="uid://dl2vajlt2r5da" path="res://scenes/levels/level2.tscn" id="6_47kk3"]
 [ext_resource type="Script" path="res://scenes/obstacles/obstacle_warning/obstacle_warning_factory.gd" id="8_ulr11"]
 [ext_resource type="AudioStream" uid="uid://m1vya6ajuek5" path="res://scenes/game/fish.mp3" id="10_fcahe"]
@@ -24,6 +26,10 @@ func _ready():
 
 func _on_ui_start_pressed():
     game_music.play()
+
+
+func _on_texture_button_toggled(toggled_on):
+    AudioServer.set_bus_mute(0, not AudioServer.is_bus_mute(0)) # Replace with function body.
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eg1oo"]
@@ -69,14 +75,17 @@ theme = ExtResource("2_m7d0e")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/StartUI"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_top = 75.0
-offset_right = 200.0
-offset_bottom = 275.0
+anchor_bottom = 0.5
+offset_left = -331.802
+offset_top = -248.0
+offset_right = 331.802
+offset_bottom = -48.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/default_color = Color(1, 0.454902, 0.0470588, 1)
 theme_override_colors/font_shadow_color = Color(0.407843, 0.137255, 0, 1)
 theme_override_colors/font_outline_color = Color(0.717647, 0.207843, 0, 1)
@@ -84,9 +93,9 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_outline_size = 20
 theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 70
+theme_override_font_sizes/normal_font_size = 135
 bbcode_enabled = true
-text = "[center]FISH GAME NAME[/center]"
+text = "[center]FISH GAME[/center]"
 scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="UI/StartUI"]
@@ -210,6 +219,31 @@ text = "PLAY AGAIN"
 [node name="SplashMusic" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("2_nadbn")
 volume_db = -3.133
+bus = &"Music"
+
+[node name="Control2" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="UI/Control2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_right = 100.0
+offset_bottom = 41.0
+grow_vertical = 0
+scale = Vector2(0.556444, 0.556444)
+toggle_mode = true
+texture_normal = ExtResource("2_ueoag")
+texture_pressed = ExtResource("3_wqf2m")
+ignore_texture_size = true
 
 [node name="CameraParent" parent="." node_paths=PackedStringArray("camera", "player", "dummy_look_at") instance=ExtResource("1_055aq")]
 script = ExtResource("2_q0fbw")
@@ -300,9 +334,11 @@ shadow_opacity = 0.55
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_fcahe")
 volume_db = -6.892
+bus = &"Music"
 
 [connection signal="pressed" from="UI/StartUI/Button" to="UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UI/EndUI/Button" to="UI" method="_on_play_again_pressed"]
+[connection signal="toggled" from="UI/Control2/TextureButton" to="." method="_on_texture_button_toggled"]
 
 [editable path="CameraParent"]
 [editable path="Player"]
