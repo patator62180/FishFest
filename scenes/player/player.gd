@@ -92,10 +92,6 @@ func start_moving():
                 move_target = position + Vector3.BACK * current_move_distance
                 rotation_target = PI
         
-        if movement_type == PlayerMovementType.Struggle:
-            input_stack.clear()     
-                
-        
         raycast_wall.rotation.y = rotation_target
         raycast_wall.force_raycast_update()
         
@@ -201,8 +197,6 @@ func get_reeled(reel: Node3D):
 func transition_to_movement_type(type: PlayerMovementType):
     if movement_type == type:
         return
-    
-    input_stack.clear()
     
     movement_type = type
     fish.set_grounded(movement_type == PlayerMovementType.Struggle)
