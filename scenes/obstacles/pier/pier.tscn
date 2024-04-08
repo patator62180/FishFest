@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://br3f1nw8ommqn"]
+
+[ext_resource type="PackedScene" uid="uid://c1186ju37ibh6" path="res://blender/pire/pire.glb" id="1_27kec"]
+
+[node name="Pier" type="Node3D"]
+
+[node name="pire" parent="." instance=ExtResource("1_27kec")]
+transform = Transform3D(-3.19635e-08, 0, -0.73124, 0, 0.73124, 0, 0.73124, 0, -3.19635e-08, 0, 0, 0)
+
+[node name="pire2" parent="." instance=ExtResource("1_27kec")]
+transform = Transform3D(-3.19635e-08, 0, -0.73124, 0, 0.73124, 0, 0.73124, 0, -3.19635e-08, -12.0373, 0, -0.00154453)

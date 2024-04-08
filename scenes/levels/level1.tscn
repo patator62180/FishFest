@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://db8vs710eb7mq"]
+[gd_scene load_steps=11 format=3 uid="uid://db8vs710eb7mq"]
 
 [ext_resource type="PackedScene" uid="uid://chksqebqkb0bi" path="res://scenes/water/water_wind_waker.tscn" id="1_5n7ux"]
 [ext_resource type="PackedScene" uid="uid://v6vv253i73fu" path="res://scenes/obstacles/shark_obstacle.tscn" id="2_y1vtf"]
 [ext_resource type="PackedScene" uid="uid://cqsivhg1nmyks" path="res://scenes/obstacles/boat_obstacle.tscn" id="3_4imwq"]
 [ext_resource type="PackedScene" uid="uid://bp84niogpdwwn" path="res://scenes/obstacles/bobber/bobber.tscn" id="4_3dhfl"]
+[ext_resource type="PackedScene" uid="uid://br3f1nw8ommqn" path="res://scenes/obstacles/pier/pier.tscn" id="4_3m0q7"]
 [ext_resource type="PackedScene" uid="uid://hnbts4x462jv" path="res://scenes/obstacles/buoy/buoy.tscn" id="4_3554m"]
 [ext_resource type="PackedScene" uid="uid://eyoee6trxtrn" path="res://scenes/levels/level_transition/level_transition.tscn" id="4_efygn"]
 [ext_resource type="PackedScene" uid="uid://blnlkyhonxqcy" path="res://scenes/levels/wall/wall.tscn" id="5_3i8as"]
@@ -11,13 +12,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uyfsx"]
 size = Vector3(20, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_moj42"]
-size = Vector3(20, 0.5, 3)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_i8d3v"]
-top_radius = 0.25
-bottom_radius = 0.25
 
 [node name="Level1" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -66,57 +60,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -2.40413e-07)
 [node name="Wall" parent="Obstacles/Pier" instance=ExtResource("5_3i8as")]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -2.18557e-07)
-mesh = SubResource("BoxMesh_moj42")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Obstacles/Pier"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
+[node name="Pier" parent="Obstacles/Pier" instance=ExtResource("4_3m0q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72788, 0, 0.121353)
 
 [node name="Pier2" type="Node3D" parent="Obstacles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -25)
@@ -124,57 +69,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -25)
 [node name="Wall" parent="Obstacles/Pier2" instance=ExtResource("5_3i8as")]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -2.18557e-07)
-mesh = SubResource("BoxMesh_moj42")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Obstacles/Pier2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
+[node name="Pier5" parent="Obstacles/Pier2" instance=ExtResource("4_3m0q7")]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, -6.5, 0, 3.8147e-06)
 
 [node name="Pier3" type="Node3D" parent="Obstacles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -38)
@@ -182,57 +78,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -38)
 [node name="Wall" parent="Obstacles/Pier3" instance=ExtResource("5_3i8as")]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -2.18557e-07)
-mesh = SubResource("BoxMesh_moj42")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Obstacles/Pier3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
+[node name="Pier6" parent="Obstacles/Pier3" instance=ExtResource("4_3m0q7")]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, -6.5, 0, 3.8147e-06)
 
 [node name="Pier4" type="Node3D" parent="Obstacles"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.5, 0, -38)
@@ -240,57 +87,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.5, 0
 [node name="Wall" parent="Obstacles/Pier4" instance=ExtResource("5_3i8as")]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -2.18557e-07)
-mesh = SubResource("BoxMesh_moj42")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
-mesh = SubResource("CylinderMesh_i8d3v")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Obstacles/Pier4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
-mesh = SubResource("CylinderMesh_i8d3v")
+[node name="Pier7" parent="Obstacles/Pier4" instance=ExtResource("4_3m0q7")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7.5, 0, -7.62939e-06)
 
 [node name="Buoy3" parent="Obstacles" instance=ExtResource("4_3554m")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.84217e-14, 0, 7.99877)
