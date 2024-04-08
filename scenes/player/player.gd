@@ -124,25 +124,25 @@ func _input(event):
     var direction = ""
     var pressed = true
     
-    if event.is_action_pressed("ui_left"):
+    if event.is_action_pressed("left"):
         direction = "left" if !is_wearing_glasses else "right"
-    if event.is_action_pressed("ui_right"):
+    if event.is_action_pressed("right"):
         direction = "right" if !is_wearing_glasses else "left"
-    if event.is_action_pressed("ui_up"):
+    if event.is_action_pressed("up"):
         direction = "up" if !is_wearing_glasses else "down"
-    if event.is_action_pressed("ui_down"):
+    if event.is_action_pressed("down"):
         direction = "down" if !is_wearing_glasses else "up"
     
-    if event.is_action_released("ui_left"):
+    if event.is_action_released("left"):
         direction = "left" if !is_wearing_glasses else "right"
         pressed = false
-    if event.is_action_released("ui_right"):
+    if event.is_action_released("right"):
         direction = "right" if !is_wearing_glasses else "left"
         pressed = false
-    if event.is_action_released("ui_up"):
+    if event.is_action_released("up"):
         direction = "up" if !is_wearing_glasses else "down"
         pressed = false
-    if event.is_action_released("ui_down"):
+    if event.is_action_released("down"):
         direction = "down" if !is_wearing_glasses else "up"
         pressed = false
     
